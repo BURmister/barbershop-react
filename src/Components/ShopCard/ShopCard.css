@@ -1,0 +1,164 @@
+.slider__item {
+    width: 200px;
+    height: 330px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+
+    background-color: #d3d3d3;
+    border: 1px solid #d3d3d3;
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7);
+    
+    z-index: 1;
+}
+
+.button__item {
+    height: 40px;
+    width: 40px;
+}
+
+.button__buy {
+    padding: 10px 20px;
+    color:rgba(77, 76, 76, 0.7);
+}
+
+.button__form {
+    width: 110px;
+    height: 40px;
+}
+
+.price__wrapper {
+    list-style: none;
+}
+
+.item__price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+    margin-left: 10px;
+
+    width: 180px;
+    height: 40px;
+
+    background-color: #afafaf;
+}
+
+.button__buy {
+    padding: 12px;
+}
+
+.price__wrapper {
+    padding-left: 30px;
+}
+
+.slider__img {
+    width: 200px;
+    height: 165px;
+    user-select: none;
+}
+
+.slider__a {
+    cursor: pointer;
+}
+
+.slider__a>li>a {
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px;
+    color: black;
+    transition: all 0.5s;
+}
+
+.slider__a {
+    padding-left: 16px;
+}
+
+.slider__a>li>a:hover {
+    color: rgba(83, 83, 83, 0.568);
+}
+
+.slider__li {
+    list-style: none;
+
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: initial;
+
+    color: black;
+
+    user-select: none;
+}
+
+.slider__li>a>span {
+    text-transform: uppercase;
+}
+
+.button__form:hover,.button__buy:hover,.button__item:hover {
+    border: 3px solid black;
+}
+
+.slider__item {
+    animation-name: shopCards;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+}
+
+.slider__item :nth-child(2){
+    animation-name: itemsOfCards;
+    animation-iteration-count: 1;
+    animation-duration: 1.5s;
+}
+
+.slider__item :nth-child(1) {
+    animation-name: firstCards;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+}
+
+@keyframes itemsOfCards {
+    0% { 
+        transform: translateX(-200%);
+        opacity: 0;
+    }
+
+    80% { 
+        opacity: 0.5;
+    }
+    
+    100% { 
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes shopCards {
+    0% { 
+        transform: translateX(-200%);
+        opacity: 0;
+    }
+
+    80% { 
+        opacity: 0.5;
+    }
+    
+    100% { 
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes firstCards {
+    0% { 
+        transform: translateX(0);
+    }
+
+    100% { 
+        transform: translateX(0);
+    }
+}
+
+

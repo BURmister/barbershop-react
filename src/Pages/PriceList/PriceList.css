@@ -1,0 +1,318 @@
+body {
+    background-color: #ffffff;
+}
+
+.PriceList__main {
+    color: black;
+
+    background-color: #fff;
+}
+
+p, li {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.PriceList__container {
+    max-width: 940px;
+  
+    margin: 0 auto;
+    padding: 0 auto;
+  
+    z-index: 1;
+}
+
+
+/* ////////////////////////// */
+
+
+
+
+
+
+.PriceList__logo {
+    position: absolute;
+
+    width: 371px;
+    height: 153px;
+
+    top: 26%;
+    left: 37%;
+}
+
+.PriceList__logo__svg path{
+    animation-name: logo__svg-color;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    fill: black;
+    animation-fill-mode: forwards;
+}
+
+@keyframes logo__svg-color {
+    0% {
+        fill: #000;
+        transform: translateX(0);
+    }
+
+    100% {
+        fill: black;
+        transform: translateX(-1000px);
+        
+    }
+    
+}
+
+.PriceList__animation__main {
+    animation-name: animationMain;
+    animation-duration: 1.9s;
+    animation-iteration-count: 1;
+}
+
+@keyframes animationMain {
+    0% {
+        transform: translateY(600px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+h1 {
+    color: black;
+}
+
+.PriceList__inner__container {
+    max-width: 1070px;
+  
+    margin: 50px auto;
+    padding: 50px auto;
+  
+    z-index: 1;
+}
+
+/* .PriceList__breadcrumbs>li {
+    list-style: url(.PriceList__.PriceList__/барбершоп/imgs/shaaaaapppppeeeee.PriceList__svg);
+} */
+
+.PriceList__breadcrumbs>li:first-child {
+    list-style: none;
+}
+
+.PriceList__breadcrumbs>li>a {
+    color: black    ;
+}
+
+.PriceList__breadcrumbs>li>span {
+    padding-left: 7px;
+    opacity: 0.3;
+}
+
+.PriceList__breadcrumbs {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 15px;
+
+    padding-top: 23px;
+}
+
+.PriceList__price__list {
+    padding-top: 25px;
+}
+
+.PriceList__priceS__h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 35px;
+
+    margin-bottom: 70px;
+
+    position: relative;
+}
+
+.PriceList__priceS__h2::after {
+    content: '';
+
+    position: absolute;
+    top: 50% -2px;
+    left: 94%;
+
+    background-color: #000000;
+    width: 160px;
+    height: 2px;
+}
+
+.PriceList__priceS__h2::before {
+    content: '';
+
+    position: absolute;
+    top: 50% -2px;
+    right: 94%;
+
+    background-color: #000000;
+    width: 160px;
+    height: 2px;
+}
+
+.PriceList__priceS__wrapper {
+    display: grid;
+    height: 600px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr) ;
+    grid-gap: 40px;
+}
+
+.PriceList__info__list {
+    grid-column: span 2;
+}
+
+/* .PriceList__featureS__list>li {
+    list-style: url(.PriceList__.PriceList__/барбершоп/imgs/shaaaaapppppeeeee.PriceList__svg);
+} */
+
+.PriceList__featureS__h3>h3 {
+    font-size: 24px;
+}
+
+.PriceList__featureS__list {
+    padding-top: 30px;
+}
+
+.PriceList__featureS__list>li {
+    padding-top: 13px;
+}
+
+.PriceList__featureS__list>li:first-child {
+    padding: 0;
+}
+
+.PriceList__service__h3>h3 {
+    font-size: 24px;
+}
+
+.PriceList__service__list {
+    padding-top: 40px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 3px solid black;
+}
+
+td {
+    width: 231px;
+    height: 43px;
+    border: 3px solid black;
+}
+
+td>li {
+    padding-left: 20px;
+    list-style: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.PriceList__info__wrapper {
+    padding-top: 35px;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.PriceList__info__h3 {
+    font-size: 24px;
+}
+
+
+
+
+
+
+/*///////////// Анимация /////////////*/
+
+
+
+.PriceList__news__item-h3,.PriceList__news__item-li,.PriceList__news__item-time1,.PriceList__news__item-li,
+.PriceList__news__item-time2,.PriceList__news__button,.PriceList__gallery_button_back,.PriceList__gallery__button-next,
+.PriceList__contacts__item-h3,.PriceList__contacts__item-p,.PriceList__contacts__item-time,.PriceList__contacts__buttonS,.PriceList__sign,.PriceList__footer,
+.PriceList__nav,.PriceList__service__h3,.PriceList__h1,.PriceList__priceS__h2,.PriceList__featureS__h3,.PriceList__featureS__list,.PriceList__service__list,.PriceList__info__h3,.PriceList__info__p {
+    animation-name: contentItems; 
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+
+@keyframes contentItems {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.PriceList__breadcrumbs {
+    animation-name: slide;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-600px);
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    
+}
+
+body, main {
+    animation: colorAnimated;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+
+@keyframes colorAnimated {
+    0% {
+        background-color: #272726;
+    }
+    
+    100% {
+        background-color: #ffffff;
+    }
+}
+
+
+.PriceList__button {
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.PriceList__button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-weight: bold;
+}
+
+.PriceList__button:hover {
+    font-size: 18px;
+}
+
+

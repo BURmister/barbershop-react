@@ -1,0 +1,14 @@
+.news__item-li {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    padding-top: 5px;
+} 
+
+.news__item-time {
+    padding-top: 10px;
+    padding-bottom: 13px;
+    font-size: 13px;
+    font-weight: bold;
+}

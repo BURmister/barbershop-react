@@ -1,0 +1,462 @@
+.container {
+    max-width: 940px; 
+  
+    margin: 0 auto;
+    padding: 0 auto;
+  
+    z-index: 1;
+}
+
+.Information__main {
+    background-color: #000000;
+    background-image: url(./imgs/Layer.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+  
+.features__lidt-item h3 {
+    font-size: 30px;
+    line-height: 42px;
+}
+  
+.index_colums {
+    color: #000000;
+  
+}
+  
+.index_colums h2 {
+    font-size: 30px;
+    line-height: 42px;
+}
+  
+.appointment__item input {
+    font: inherit;
+  
+    background-color: transparent;
+    border: 2px solid #000000;
+}
+  
+.container {
+    max-width: 940px;
+  
+    margin: 0 auto;
+    padding: 0 auto;
+  
+    z-index: 1;
+}
+
+.logo__wrapper {
+    display: flex;
+    justify-content: center;
+
+    user-select: none;
+    padding-top: 133px;
+}
+  
+.header__logo {
+    width: 371px;
+    height: 153px;
+    margin-bottom: 65px;
+}
+  
+.features__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+  
+.features__list-item {
+    padding-top: 65px;
+    padding-bottom: 50px;
+    
+    width: 300px;
+    height: 200px;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+  
+.feature__img-wrapper {
+    padding-bottom: 14px;
+    padding-top: 26px;
+}
+  
+.news__gallery-wrapper {
+    margin-top: 65px;
+  
+    padding-top: 35px;
+    padding-left: 45px;
+    padding-right: 45px;
+  
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-area: 'news' 'gallery';
+   
+    min-height: 450px;
+    width: 100%;
+  
+    color: #000000;
+  
+    background-color: #f8f5f2;
+    background-position: 0 0;
+    background-repeat: repeat;
+}
+  
+.news {
+    min-width: 400px;
+  
+    display: grid;
+    grid-template-rows: 1fr 9fr 1fr;
+  
+    text-align: left;
+    list-style: none;
+}
+  
+.news__button {
+    margin-left: 0;
+}
+  
+.news__gallery-border {
+    width: 8px;
+    height: 280px;
+  
+    padding-top: 30px;
+    padding-right: 50px;
+}
+  
+.news__button {
+    width: 144px;
+    height: 44px;
+}
+  
+.news_button {
+    height: 44px;
+  
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-color: #000000;
+}
+  
+.news_button:hover {
+    background-color: grey;
+    color: black;
+    border: 3px solid black;
+}
+  
+.gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+  
+.gallery__wrapperr {
+    height: 335px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center ;
+  
+}
+  
+.gallery__item-h3 {
+    padding-left: 50px;
+}
+  
+.gallery__buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+  
+.gallery_button_back, .gallery_button_next {
+    width: 142px;
+    height: 44px;
+  
+    background-color: #000000;
+}
+  
+.gallery_button_back:hover,
+.gallery_button_next:hover {
+    background-color: grey;
+    color: black;
+    border: 3px solid black;  
+}
+  
+.info {
+    padding-top: 36px;
+    padding-bottom: 120px;
+}
+  
+.info__wrapper {
+    min-height: 450px;
+  
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 80px;
+    grid-area: 'contacts' 'sign';
+  
+    background-color: #ffffff;
+}
+  
+.contacts {
+  
+    padding-top: 35px;
+    padding-bottom: 100px;
+    padding-left: 80px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+  
+.contacts__buttonS {
+    display: flex;
+    gap: 30px;
+}
+  
+.contacts__buttonS a{
+    color: #ffffff;
+}
+  
+.contacts__button {
+    width: 144px;
+    height: 44px;
+  
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-color: #000000;
+}
+  
+.contacts__button:hover {
+    background-color: grey;
+    color: black;
+    border: 3px solid black;
+}
+  
+.sign {
+    padding-top: 35px;
+    padding-right: 80px;
+    padding-bottom: 60px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 50px;
+}
+  
+.sign__itemS-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+}
+  
+.sign__form-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+    grid-area: 
+    'first' 'second'
+    'third' 'firth';
+}
+  
+.appointment__item {
+    display: flex;
+    flex-direction: column;
+}
+  
+.sign__button {
+    padding-top: 20px;
+  
+    display: grid;
+    grid-column: 1fr;
+}
+  
+  #appointment-date,
+  #appointment-time,
+  #appointment-name,
+  #appointment-phone {
+    cursor: pointer;
+}
+  
+.sign__button-item {
+    height: 44px;
+  
+    text-transform: uppercase;
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+}
+  
+.sign__button-item:hover {
+    background-color: grey;
+    color: black;
+    border: 3px solid black; 
+}
+
+.sign__form-item {
+    position: relative;
+}
+
+#appointment-phone {
+    cursor: text;
+}
+
+#appointment-name {
+    cursor: text;
+}
+
+.Information__clear{
+    position: absolute;
+
+    width: 15px;
+    height: 15px;
+
+    left: 90%;
+    top: 57%;
+
+    cursor: pointer;
+}
+
+.features__list {
+    overflow: hidden;
+    color: #ffffff;
+}
+  
+.features__list-item {
+    animation-name: featuresItems;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+}
+  
+@keyframes featuresItems {
+    0% {
+        opacity: 0;
+  }
+  
+    100% {
+        opacity: 1;
+  }
+}
+  
+.animate-features {
+    overflow: hidden;
+}
+  
+.features__list {
+    animation-name: featuresList; 
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+  
+@keyframes featuresList {
+    0% {
+        transform: translateY(-400px);
+  }
+
+    100% {
+        transform: translateY(0px);
+  }
+}
+  
+.header__logo {
+    animation-name: logo; 
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+}
+  
+@keyframes logo {
+    0% {
+        opacity: 0.1;
+  }
+  
+    100% {
+        opacity: 1;
+  }
+}
+  
+.gallery__item-img {
+    animation-name: img-slider; 
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+  
+@keyframes img-slider {
+    0% {
+        transform: translateX(600px);
+  }
+  
+    100% {
+        transform: translateX(0);
+  }
+}
+  
+.news__gallery-wrapper {
+    overflow: hidden;
+}
+  
+.news__item-h3,.news__item-li,.news__item-time1,.news__item-li,
+.news__item-time2,.news__button,.gallery_button_back,.gallery__button-next,
+.contacts__item-h3,.contacts__item-p,.contacts__item-time,.contacts__buttonS,.sign,.footer,
+.nav {
+    animation-name: contentItems; 
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+}
+  
+@keyframes contentItems {
+    0% {
+        opacity: 0;
+  }
+  
+    100% {
+        opacity: 1;
+  }
+}
+
+.feature__img-wrapper img {
+    animation-name: кручуВерчу; 
+    animation-duration: 1s;
+    animation-iteration-count: 5;
+    animation-delay: 1.5s;
+
+    user-select: none;
+}
+  
+  @keyframes кручуВерчу {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button, .news_button, .sign__button-item, .contacts__button  {
+    transition: all 0.5s;
+    cursor: pointer;
+}
+  
+.button:hover, .news_button:hover, .sign__button-item:hover, .contacts__button:hover  {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-weight: bold;
+}
+  
+.button:hover, .news_button:hover, .sign__button-item:hover{
+    font-size: 18px;
+}
+
