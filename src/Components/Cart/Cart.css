@@ -54,27 +54,29 @@
     opacity: 0.5;
 }
 
-.drawer__container {
-    width: 80%;
-    height: 100%;
-    padding-top: 5%;
+.drawer__flex {
+    width: 100%;
+    height: 100%; 
     padding-bottom: 15%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
 }
 
-.drawer__content__container {
+.drawer__header {
+    max-width: 100%;
+    height: 10%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 25px 1px rgba(0, 0, 0, 0.2);
 }
-
 
 .drawer__button__buy {
     height: 44px;
+    width: 100%;
   
     color: #ffffff;
     text-align: center;
@@ -87,12 +89,47 @@
 
     user-select: none;
 }
+
+.drawer__content {
+    padding: 2% 0 2% 3.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10%;
+    width: 100%;
+    height: 75%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.content__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5%;
+    height: 100%;
+    width: 100%;
+}
+
+.drawer__container__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -2px 25px 1px rgba(0, 0, 0, 0.2);
+    height: 15%;
+}
+
+.drawer__footer {
+    height: 15%;
+    width: 80%;
+}
+
   
 .drawer__button__buy:hover {
     background-color: white;
     color: black;
     border: 3px solid black;
-
 }
 
 .drawer__close, .drawer__h2, .drawer__button__buy {
