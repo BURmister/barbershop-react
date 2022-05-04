@@ -12,13 +12,13 @@ import iconClear from './imgs/clear.svg'
 function Shop(props) {
 
     React.useEffect(() => {
-        props.isHeader();
+        props.isHeader();       
         axios.get('https://6241abd3042b562927a77458.mockapi.io/goods').then(res => {
             setShopCards(res.data)
         })
     })
 
-
+    
     // <a href="../барбершоп/shop-item.html"><img className="slider__img" src="../барбершоп/imgs/Layer 38.png" alt="" width="220px" height="165px" /></a>
     // <a href="../барбершоп/shop-item.html"><img className="slider__img" src="../барбершоп/imgs/Layer 30.png" alt="" /></a>
     // <a href="../барбершоп/shop-item.html"><img className="slider__img" src="../барбершоп/imgs/Layer 39.png" alt=""/></a>
@@ -66,6 +66,9 @@ function Shop(props) {
                 <div className="inner__container">
                     <div className="shop">
 
+
+                        {/* САЙДБАР С ФИЛЬТРАЦИЕЙ
+                            В КАЖДОМ ЛЕЙБЛЕ ИНПУТ-ЧЕКБОКС ДЛЯ ФИЛЬТРАЦИИ */}
                         <div className="sidebar">
                             <div className="firmS">
                                 <h3 className="shop__h3">производители:</h3>

@@ -11,11 +11,13 @@ import iconNotVisible from '../imgs/view-hide.svg'
 function Login(props) {
 
     // контролируемые инпуты
+    // инпут логина
     const [loginValue, setLoginValue] = React.useState();
     const onInputLogin = (event) => {
         setLoginValue(event.target.value)
     }
 
+    // инпут пароляй
     const [passwordValue, setPasswordValue] = React.useState();
     const onInputPassword = (event) => {
         setPasswordValue(event.target.value)
@@ -31,14 +33,13 @@ function Login(props) {
                 <form className="login__form" action="#" method="post"> 
 
                     <p className="p-relative"> 
-                        <input onChange={onInputLogin} value={loginValue} className="" id="user__login" type="text" name="login" placeholder="email@example.com" />
+                        <input onChange={onInputLogin} value={loginValue} className="user__login" id="user__login" type="text" name="login" placeholder="email@example.com" />
                         {loginValue ?  <img onClick={() => setLoginValue('')} src={iconClear} className="clear" /> : <img className="login__icon-user" src={iconUser} width="20px"/>} 
                     </p> 
                     
                     <p className="p-relative"> 
                         <input onChange={onInputPassword} value={passwordValue} className="login__icon-password" id="user__password" type={passwordVisible ? "text" : "password"} name="password" placeholder="password123" /> 
-                        {
-                            passwordValue ?  
+                        { passwordValue ?  
                             <div> 
                                 <div onClick={() => setPasswordVisible(!passwordVisible)} >
                                     { passwordVisible ? <img src={iconNotVisible} className="eye-1" /> : <img src={iconVisible} className="eye"/>}
@@ -57,7 +58,7 @@ function Login(props) {
                                 Запомните меня 
                             </label>    
                             <div className="restore__wrapper"> 
-                                <a className="restore" href="#">Я забыл пароль</a> 
+                                <a className="restore">Я забыл пароль</a> 
                             </div> 
                         </div> 
                     </p> 

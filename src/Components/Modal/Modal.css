@@ -137,14 +137,14 @@
   
     font: inherit;
     color: black;
-    text-transform: uppercase;
+    text-transform: none;
   
     background-color: #f9f6f3;
     border: 2px solid black;
 }
   
 .login__form input:focus {
-    border-color: #663d15;
+    text-transform: none;
 }
 
 .p-relative {
@@ -178,7 +178,7 @@
 
 .eye {
     position: absolute;
-    left: 85%;
+    left: 83%;
     top: 23%;
   
     width: 18px;
@@ -190,7 +190,7 @@
 
 .eye-1 {
     position: absolute;
-    left: 84%;
+    left: 82%;
     top: 19%;
   
     width: 24px;
@@ -222,6 +222,7 @@
 }
   
 .restore {
+    color: black;
     transition: all 0.5s;
     text-decoration: none;
     font-weight: bold;

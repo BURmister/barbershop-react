@@ -30,9 +30,7 @@
     flex-direction:column;
     align-items: center;
 
-    animation-name: drawer;
-    animation-iteration-count: 1;
-    animation-duration: 0.5s;
+
 }
 
 .drawer__content__container>h2 {
@@ -41,6 +39,7 @@
 
 .drawer__close {
     cursor: pointer;
+    user-select: none;
 }
 
 .drawer__close__img {
@@ -111,6 +110,10 @@
     width: 100%;
 }
 
+.content__wrapper:last-child {
+    padding-bottom: 100px;
+}
+
 .drawer__container__footer {
     display: flex;
     justify-content: center;
@@ -138,13 +141,35 @@
     animation-duration: 2s;
 }
 
-@keyframes drawer {
+.show {
+    animation-name: drawerShow;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+}
+
+.hide {
+    animation-name: drawerHide;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+}
+
+@keyframes drawerShow {
     0% {
         transform: translateX(500px);
     }
 
     100% {
         transform: translateX(0);
+    }
+}
+
+@keyframes drawerHide {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(500px);
     }
 }
 

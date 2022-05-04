@@ -28,12 +28,11 @@ function App() {
   const [isHeader, setIsHeader] = React.useState(true);
   const [cart, setCart] = React.useState(false)
 
-
   return (
     <div> 
 
-      
-      {cart ? <Cart clickOnClose={() => setCart(false)} /> : null}
+      {cart ? <Cart clickOnClose={() => setCart(false)} stateOfCart={cart} /> : null}
+
       {isHeader ? 
         <Header clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)} /> : 
         <Header2 clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)}/>
@@ -46,7 +45,6 @@ function App() {
       
 
       <div className="main" onClick={() => setLogin(false)} >
-
       
         <Routes>
           

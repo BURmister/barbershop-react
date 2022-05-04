@@ -82,6 +82,7 @@ function Information(props) {
                 </div>
             </div>
 
+            {/* В ЭТОМ БЛОКЕ НАХОДИТСЯ КАРУСЕЛЬ */}
             <div className="index_colums" >
 
                 <div className="container" onClick={props.clickOnCloseMap}>
@@ -97,11 +98,13 @@ function Information(props) {
                             <Link to="/News" ><div className="news__button"><a className="news_button akor"> все новости </a></div></Link>
                         </div>
 
-
+                        {/* КАРУСЕЛЬ ЗДЕСЬ */}
                         <div className="gallery">
                             <div className="gallery__item-h3"><h3> фотогалерея </h3></div>
                             <div className="gallery__wrapperr">
                                 <div className="gallery__item-img"><img src={imgCarousel} alt="" /></div>
+
+                                {/* КНОПКИ ДЛЯ КАРУСЕЛИ */}
                                 <div className="gallery__buttons">
                                     <div className="gallery__button-back"><button className="button gallery_button_back" type="button"> назад </button></div>
                                     <div className="gallery__button-next"><button className="button gallery_button_next" type="button"> вперед </button></div>
