@@ -22,15 +22,16 @@
     width: 30%;
     height: 100%;
     right: 0;
-    background: #ffffff;
-    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.2);
-    z-index: 9;
-    color: black;
+
     display: flex;
     flex-direction:column;
     align-items: center;
 
+    color: black;
+    background: #ffffff;
+    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.2);
 
+    z-index: 9;
 }
 
 .drawer__content__container>h2 {
@@ -56,7 +57,7 @@
 .drawer__flex {
     width: 100%;
     height: 100%; 
-    padding-bottom: 15%;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -126,6 +127,8 @@
 .drawer__footer {
     height: 15%;
     width: 80%;
+    
+    padding-bottom: 8%;
 }
 
   

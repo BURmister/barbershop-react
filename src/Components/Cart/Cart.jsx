@@ -22,10 +22,11 @@ function Cart(props) {
 
                         <div className="drawer__content">
                             <div className="content__wrapper">
-                                <DrawerCard/>
-                                <DrawerCard/><DrawerCard/>
-                                <DrawerCard/>
-                                <DrawerCard/>
+                                <DrawerCard title={'пена для бритья'}/>
+                                <DrawerCard title={'пена для бритья'}/>
+                                <DrawerCard title={'пена для бритья'}/>
+                                <DrawerCard title={'пена для бритья'}/>
+                                <DrawerCard title={'пена для бритья'}/>
                             </div>
                         </div>
 
