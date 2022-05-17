@@ -26,10 +26,29 @@ function App() {
   const [login, setLogin] = React.useState(false);
   const [map, setMap] = React.useState(false);
   const [isHeader, setIsHeader] = React.useState(true);
-  const [cart, setCart] = React.useState(false)
+  const [cart, setCart] = React.useState(false);
+
+
+  if(login) {
+
+    let modalOpen = () => {
+      document.body.style.overflow = "hidden";
+    }
+
+    return (
+      modalOpen()
+    )
+  }
+  
+
+  let modalClose = () => {
+    document.body.style.overflow = "visible"; 
+  }
+  
 
   return (
     <div> 
+
 
       {cart ? <Cart clickOnClose={() => setCart(false)} stateOfCart={cart} /> : null}
 

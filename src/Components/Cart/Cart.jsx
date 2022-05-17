@@ -1,10 +1,20 @@
 import React from 'react';
 import './Cart.css'
+import axios from 'axios'
 
 import iconClear from '../imgs/clear.svg'
 import DrawerCard from '../DrawerCard/DrawerCard'
 
 function Cart(props) {
+
+    React.useEffect(() => {
+        axios.get('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart').then(res => {
+            setCartItems(res.data)
+        })
+    })
+
+    const [cartItems, setCartItems] = React.useState([])
+
     return(
         <div>   
         
@@ -22,11 +32,10 @@ function Cart(props) {
 
                         <div className="drawer__content">
                             <div className="content__wrapper">
-                                <DrawerCard title={'пена для бритья'}/>
-                                <DrawerCard title={'пена для бритья'}/>
-                                <DrawerCard title={'пена для бритья'}/>
-                                <DrawerCard title={'пена для бритья'}/>
-                                <DrawerCard title={'пена для бритья'}/>
+                                {cartItems
+                                    .map((item) => (
+                                        <DrawerCard title={item.title}/>
+                                ))}
                             </div>
                         </div>
 

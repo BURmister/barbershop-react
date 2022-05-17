@@ -38,10 +38,12 @@ body {
 .App {
   display: grid;
   grid-template-rows: 1fr 6fr 1fr ;
+
+  overflow: hidden;
 }
 
 .main {
-  min-height: 800px;
+  min-height: 100vh;
 }
 
 .visually__hidden {
