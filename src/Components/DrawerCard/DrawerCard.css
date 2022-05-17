@@ -35,18 +35,17 @@
     align-items: center;
 
     width: 100%;
-    height: 37px;
+    height: 40px;
 
     background-color: #afafaf;
 }
 
-.button__buy {
-    padding: 12px;
-}
-
 .buttonInCart {
-    padding: 8px;
-    height: 37px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .drawerCard__price__wrapper {
@@ -64,6 +63,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+
+    width: 45%;
 }
 
 .drawerCard__a:first-child {

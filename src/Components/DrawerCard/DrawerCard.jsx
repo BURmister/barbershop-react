@@ -1,6 +1,7 @@
 import React from 'react';
 import "./DrawerCard.css"
 import iconPlus from '../imgs/plus.svg'
+import iconMinus from '../imgs/minus.svg'
 
 function DrawerCard(props) {
     return(
@@ -16,9 +17,9 @@ function DrawerCard(props) {
                 <li className="drawerCard__li">________________</li>
                 <li className="drawerCard__li">------------------ 155 Р</li>
                 <div className="drawerCard__item__count">
-                    <div className="drawerCard__akor__wrapper"><img src={iconPlus} className="button buttonInCart button__buy"></img></div>
-                    <div className="drawerCard__price__wrapper"><li>{props.price}</li></div>
-                    <div className="drawerCard__akor__wrapper"><img src={iconPlus} className="button buttonInCart button__buy"></img></div>
+                    <div className="drawerCard__akor__wrapper"><button className="button buttonInCart button__buy"><img src={iconMinus} ></img></button></div>
+                    <div className="drawerCard__price__wrapper"><li>{props.amount}</li></div>
+                    <div className="drawerCard__akor__wrapper"><button className="button buttonInCart button__buy"><img src={iconPlus} ></img></button></div>
                 </div>
             </div>
 
