@@ -44,12 +44,7 @@ function Information(props) {
     //запрос на бэкенд с целью получить новости
     React.useEffect(() => {
         props.isHeader()
-        axios.get('https://6241abd3042b562927a77458.mockapi.io/news').then(res => {
-          setNewsCards(res.data)
-        })
     })
-    
-    const [newsCards, setNewsCards] = React.useState([])  
 
 
     return (
@@ -88,10 +83,10 @@ function Information(props) {
                 <div className="container" onClick={props.clickOnCloseMap}>
                     <div className="news__gallery-wrapper">
                 
-                        <div className="news">
+                        <div className="news"> 
                             <div className="news__item-h3"><h3> новости </h3></div>
 
-                            {newsCards.slice(0, 2).map((obj) => (
+                            {props.newsCards.slice(0, 2).map((obj) => (
                                 <NewsCard li={obj.li} date={obj.date} /> 
                             ))}
 
@@ -170,7 +165,7 @@ function Information(props) {
                                                 <div className="sign__form-item firth">
                                                     <p class="appointment__item"> 
                                                     <label for="appointment-phone">Телефон</label>
-                                                    <input onChange={onInputTel} value={telValue} id="appointment-phone" type="tel" name="phone" placeholder="+7 232 323-23-23" />
+                                                    <input onChange={onInputTel} value={telValue} id="appointment-phone" type="tel" name="phone" placeholder="+7 232 323-23-23" inputmode="tel"/>
                                                     {telValue && <img className="Information__clear" src={imgClear} onClick={() => setTelValue('')} /> }</p>
                                                 </div>
                                             </div>

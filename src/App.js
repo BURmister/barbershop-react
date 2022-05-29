@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import axios from 'axios'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
@@ -23,34 +24,36 @@ import Contacts from './Pages/Contacts/Contacts';
 
 function App() {
 
+  React.useEffect(() => {
+    axios.get('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart').then(res => {
+      setCartItems(res.data)
+    })
+    axios.get('https://6241abd3042b562927a77458.mockapi.io/goods').then(res => {
+      setShopCards(res.data)
+    })
+    axios.get('https://6241abd3042b562927a77458.mockapi.io/news').then(res => {
+      setNewsCards(res.data)
+    })
+  })
+
   const [login, setLogin] = React.useState(false);
   const [map, setMap] = React.useState(false);
+
   const [isHeader, setIsHeader] = React.useState(true);
+
   const [cart, setCart] = React.useState(false);
 
+  const [shopCards, setShopCards] = React.useState([])
+  const [cartItems, setCartItems] = React.useState([])
+  const [newsCards, setNewsCards] = React.useState([])  
 
-  if(login) {
 
-    let modalOpen = () => {
-      document.body.style.overflow = "hidden";
-    }
-
-    return (
-      modalOpen()
-    )
-  }
-  
-
-  let modalClose = () => {
-    document.body.style.overflow = "visible"; 
-  }
-  
 
   return (
     <div> 
 
 
-      {cart ? <Cart clickOnClose={() => setCart(false)} stateOfCart={cart} /> : null}
+      {cart ? <Cart clickOnClose={() => setCart(false)} stateOfCart={cart} cartItems={cartItems} setCartItems={setCartItems} /> : null}
 
       {isHeader ? 
         <Header clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)} /> : 
@@ -67,10 +70,10 @@ function App() {
       
         <Routes>
           
-          <Route path="/" element={<Information isHeader={() => setIsHeader(true)} clickOnMap={() => setMap(true)} clickOnCloseMap={() => setMap(false)}  />} exact />
+          <Route path="/" element={<Information newsCards={newsCards} isHeader={() => setIsHeader(true)} clickOnMap={() => setMap(true)} clickOnCloseMap={() => setMap(false)}  />} exact />
           <Route path="/Price-List" element={<PriceList isHeader={() => setIsHeader(false)}/>} />
-          <Route path="/News" element={<News isHeader={() => setIsHeader(false)}/>} />
-          <Route path="/Shop" element={<Shop isHeader={() => setIsHeader(false)}/>} />
+          <Route path="/News" element={<News newsCards={newsCards} isHeader={() => setIsHeader(false)}/>} />
+          <Route path="/Shop" element={<Shop isHeader={() => setIsHeader(false)} shopCards={shopCards} cartItems={cartItems} setCartItems={setCartItems}/>} />
           <Route path="/Contacts" element={<Contacts isHeader={() => setIsHeader(false)}/>} />
 
         </Routes>

@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import './Shop.css'
 import { Link } from 'react-router-dom'
 
@@ -13,12 +12,8 @@ function Shop(props) {
 
     React.useEffect(() => {
         props.isHeader();       
-        axios.get('https://6241abd3042b562927a77458.mockapi.io/goods').then(res => {
-            setShopCards(res.data)
-        })
     })
 
-    
     // <a href="../барбершоп/shop-item.html"><img className="slider__img" src="../барбершоп/imgs/Layer 38.png" alt="" width="220px" height="165px" /></a>
     // <a href="../барбершоп/shop-item.html"><img className="slider__img" src="../барбершоп/imgs/Layer 30.png" alt="" /></a>
     // <a href="../барбершоп/shop-item.html"><img className="slider__img" src="../барбершоп/imgs/Layer 39.png" alt=""/></a>
@@ -26,16 +21,17 @@ function Shop(props) {
     // <a href="../барбершоп/shop-item.html"><img className="slider__img" src="../барбершоп/imgs/Layer 33.png" alt=""/></a>
     // <a href="../барбершоп/shop-item.html"><img className="slider__img" src="../барбершоп/imgs/Layer 42.png" alt=""/></a>
 
-
-    const [shopCards, setShopCards] = React.useState([])
-
     const [searchValue, setSearchValue] = React.useState('');
 
     const onSearchInput = (event) => {
         setSearchValue(event.target.value);
     }
 
-    const [baxterInput, setBaxterInput] = React.useState(false)
+    const addToCart = (obj) => {
+        props.setCartItems(prev => [...prev, obj]);
+    }
+
+    console.log(props.cartItems)
 
     return(
         <div classNameName="Contacts__main"> 
@@ -75,7 +71,7 @@ function Shop(props) {
                                 <form className="firmS__form" action="#">
                                     <div className="firmS__wrapper">
                                         <label className="login__checkbox label__s">
-                                            <input type="checkbox" onClick={() => setBaxterInput(!baxterInput)} value='Baxter of California' name="remember" className="visually__hidden"/>
+                                            <input type="checkbox" value='Baxter of California' name="remember" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Baxter of California
                                         </label>
@@ -129,18 +125,25 @@ function Shop(props) {
                                     </div>
                                 </form>
                             </div>
-                            <button className="button button__form" type="button">показать</button>
+                            <button className="button button__form z-index-1" type="button">показать</button>
                         </div>
 
                         <div className="shop__list">      
 
                             <div className="shop__list-slider">
-                                {shopCards
-                                    .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())) 
-                                    
+                                {props.shopCards
+                                    .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))                                    
                                     .map((item, index) => (
-                                    <ShopCard index={index} img={item.img} title={item.title} li={item.li} price={item.price} /> 
-                                ))}
+                                    <ShopCard 
+                                        index={index} 
+                                        img={item.img} 
+                                        title={item.title} 
+                                        li={item.li} 
+                                        price={item.price} 
+                                        onPlus={(obj) => addToCart(obj)}
+                                    /> 
+                                    ))
+                                }
                             </div>
 
                             {/* <div className="slider__buttonS"> 

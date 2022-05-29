@@ -87,7 +87,7 @@
     color: rgba(83, 83, 83, 0.568);
 }
 
-.drawerCard__li {
+.drawerCard__line, .drawerCard__li {
     list-style: none;
 
     font-size: 16px;
@@ -97,12 +97,46 @@
     color: black;
 }
 
+.drawerCard__line {
+    border-bottom: 3px solid black;
+    width: 100%;
+}
+
+.drawerCard__price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    border-bottom: 3px solid black;
+    margin-bottom: 5%;
+}
+
+.drawerCard__dashed-line {
+    border-bottom: 3px dashed black;
+    width: 65%;
+}
+
+.drawerCard__props-price {
+    width: 35%;
+    text-align: center;
+}
+
 .drawerCard__li>a>span {
     text-transform: uppercase;
 }
 
+.drawerCard__amount__wrapper {
+    list-style: none;
+}
+
 .button__form:hover,.button__buy:hover,.button__item:hover {
     border: 3px solid black;
+}
+
+.drawerCard__delete-item {
+    transform: rotate(45deg);
 }
 
 .drawerCard {

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 
 
 import './News.css'
@@ -11,13 +10,7 @@ function News(props) {
 
     React.useEffect(() => {
         props.isHeader()
-        axios.get('https://6241abd3042b562927a77458.mockapi.io/news').then(res => {
-            setNewsCards(res.data)
-        })
     })
-
-    const [newsCards, setNewsCards] = React.useState([])
-
     
 
     return(
@@ -42,7 +35,7 @@ function News(props) {
                 <div className="inner__container">
                     <div className="News__h2"><h2>новости</h2></div>
                     <div className="news">
-                        {newsCards.map((obj) => (
+                        {props.newsCards.map((obj) => (
                             <NewsCard li={obj.li} date={obj.date} /> 
                         ))}
                     </div>

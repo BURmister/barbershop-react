@@ -165,7 +165,7 @@ h1 {
     align-items: flex-start;
     color: black;
     user-select: none;
-    z-index: 23;
+    z-index: 1;
 }
 
 .shop__h3 {

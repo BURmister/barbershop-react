@@ -49,14 +49,8 @@ function Contacts(props) {
                                         сб-вс: с 10:00 до 19:00
                                     </p>
                                 </div>
-                                <div className="contacts__buttonS">
-                                    <a className="contacts__button akor"> как проехать </a>
-                                </div>
                             </div>    
 
-                            <div>
-                                <input type="text" />
-                            </div>
                         </div> 
                     </div>
                 </div>

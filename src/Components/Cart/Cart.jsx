@@ -7,13 +7,9 @@ import DrawerCard from '../DrawerCard/DrawerCard'
 
 function Cart(props) {
 
-    React.useEffect(() => {
-        axios.get('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart').then(res => {
-            setCartItems(res.data)
-        })
-    })
-
-    const [cartItems, setCartItems] = React.useState([])
+    const removeFhromCart = (obj) => {
+        props.setCartItems([...props.cartItems, obj]);
+    }
 
     return(
         <div>   
@@ -32,9 +28,9 @@ function Cart(props) {
 
                         <div className="drawer__content">
                             <div className="content__wrapper">
-                                {cartItems
+                                {props.cartItems
                                     .map((item) => (
-                                        <DrawerCard title={item.title}/>
+                                        <DrawerCard id={item.id} title={item.title}/>
                                 ))}
                             </div>
                         </div>

@@ -436,7 +436,7 @@
     user-select: none;
 }
   
-  @keyframes кручуВерчу {
+@keyframes кручуВерчу {
     0% {
         transform: rotate(0deg);
     }
