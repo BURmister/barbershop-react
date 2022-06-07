@@ -206,19 +206,11 @@
 }
   
 .contacts {
-  
-    padding-top: 35px;
-    padding-bottom: 100px;
-    padding-left: 80px;
+    padding-left: 10%;
   
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-  
-.contacts__buttonS {
-    display: flex;
-    gap: 30px;
+    justify-content: space-around;
 }
   
 .contacts__buttonS a{
@@ -226,39 +218,26 @@
 }
   
 .contacts__button {
-    width: 144px;
-    height: 44px;
-  
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
     background-color: #000000;
-}
-  
-.contacts__button:hover {
-    background-color: grey;
-    color: black;
-    border: 3px solid black;
+    width: 100%;
 }
   
 .sign {
-    padding-top: 35px;
-    padding-right: 80px;
-    padding-bottom: 60px;
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    gap: 50px;
+    padding-right: 15%;
+    height: 100%;
+    width: 100%;
 }
-  
-.sign__itemS-wrapper {
+
+.sign__form {
+    height: 99.9%;
+}
+
+.appointment_form {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 15px;
+    align-items: left;
+    justify-content: space-around;
 }
   
 .sign__form-wrapper {
@@ -276,10 +255,10 @@
 }
   
 .sign__button {
-    padding-top: 20px;
-  
     display: grid;
     grid-column: 1fr;
+
+    width: 100%;
 }
   
   #appointment-date,
@@ -299,6 +278,8 @@
     justify-content: center;
     align-items: center;
     background-color: #000000;
+
+    width: 100%;
 }
   
 .sign__button-item:hover {

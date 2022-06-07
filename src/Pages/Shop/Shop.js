@@ -1,5 +1,6 @@
 import React from 'react'
 import './Shop.css'
+import axios from 'axios'   
 import { Link } from 'react-router-dom'
 
 
@@ -28,10 +29,9 @@ function Shop(props) {
     }
 
     const addToCart = (obj) => {
+        axios.post('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart', obj);
         props.setCartItems(prev => [...prev, obj]);
     }
-
-    console.log(props.cartItems)
 
     return(
         <div classNameName="Contacts__main"> 

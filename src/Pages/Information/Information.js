@@ -46,18 +46,23 @@ function Information(props) {
         props.isHeader()
     })
 
+    const clickOnMap = () => {
+        props.overflowHidden();
+        props.clickOnMap();
+    }
+
 
     return (
         <div className="Information__main">
 
 
-            <div className="logo__wrapper" onClick={props.clickOnCloseMap}>
+            <div className="logo__wrapper">
                     <div className="header__logo">  
                         <img src={imgLogo} width="371px" height="153px" alt="" />
                     </div>
             </div>
 
-            <div className="container animate-features" onClick={props.clickOnCloseMap}>
+            <div className="container animate-features">
                 <div className="features__list">
                     <div className="features__list-item">
                         <div className="feature__h3-wrapper"><h3>быстро</h3></div>
@@ -80,7 +85,7 @@ function Information(props) {
             {/* В ЭТОМ БЛОКЕ НАХОДИТСЯ КАРУСЕЛЬ */}
             <div className="index_colums" >
 
-                <div className="container" onClick={props.clickOnCloseMap}>
+                <div className="container">
                     <div className="news__gallery-wrapper">
                 
                         <div className="news"> 
@@ -112,67 +117,72 @@ function Information(props) {
 
                 <div className="info">
                     <div className="container">
-                        <div className="info__wrapper">
+                        <div  className="info__wrapper">
 
                             <div className="contacts">
-                                <div className="contacts__item-h3" onClick={props.clickOnCloseMap}><h3> контактная информация </h3></div>
-                                <div className="contacts__item-p" onClick={props.clickOnCloseMap}>
-                                    <p> Барбершоп Бородинский <br/>
-                                        Адрес: г. Санкт-Петербург, <br/>Б. Конюшенная, д. 19/8 <br/>
-                                        Телефон: 000-00-00-00
-                                    </p>
+                                <div className="contacts__item-h3"><h3> контактная информация </h3></div>
+                                <div className="contacts__info">
+                                    <div className="contacts__item-p">
+                                        <p> Барбершоп Бородинский <br/>
+                                            Адрес: г. Санкт-Петербург, <br/>Б. Конюшенная, д. 19/8 <br/>
+                                            Телефон: 000-00-00-00
+                                        </p>
+                                    </div>
+                                    <div className="contacts__item-time">
+                                        <p> Время работы:<br/>
+                                            пн-пт: с 10:00 дo 22:00 <br/>
+                                            сб-вс: с 10:00 до 19:00
+                                        </p>
+                                    </div>
                                 </div>
-                                <div className="contacts__item-time" onClick={props.clickOnCloseMap}>
-                                    <p> Время работы:<br/>
-                                        пн-пт: с 10:00 дo 22:00 <br/>
-                                        сб-вс: с 10:00 до 19:00
-                                    </p>
-                                </div>
-                                <div className="contacts__buttonS">
-                                    <a className="contacts__button akor" onClick={props.clickOnMap}> как проехать </a>
-                                    <Link to="/Contacts" ><a className="contacts__button akor"> обратаня связь </a></Link>
-                                </div>
+                                <Link to="/Contacts" ><div className="sign__button"><a className="contacts__button sign__button-item "> как проехать | обратаня связь </a></div></Link>
                             </div>
 
-                            <div className="sign" onClick={props.clickOnCloseMap}>
-                                <div className="sign__item-h3"><h3> записаться </h3></div>
-                                <div  className="sign__itemS-wrapper">
-                                    <div className="sign__item-p">
-                                        <p className="appointment_info"> укажите желаемую дату и время и мы свяжемся с вами для подтверждения брони</p>
-                                    </div>
-                                    <div className="sign__form">
-                                        <form className="appointment_form" action="" method="POST">
-                                            <div className="sign__form-wrapper">
-                                                <div className="sign__form-item first">
-                                                    <p class="appointment__item" >
-                                                    <label for="appointment-date">Дата</label>
-                                                    <input onChange={onInputDate} value={dateValue} id="appointment-date" type="date" name="date" /></p>
-                                                </div>
-                                    
-                                                <div className="sign__form-item second">
-                                                    <p class="appointment__item">  
-                                                    <label for="appointment-time">Время</label>
-                                                    <input onChange={onInputTime} value={timeValue} id="appointment-time" type="time" name="time" /></p>
-                                                </div>
-                                    
-                                                <div className="sign__form-item third">
-                                                    <p class="appointment__item">  
-                                                    <label for="appointment-name">Ваше имя</label>
-                                                    <input onChange={onInputName} value={nameValue} id="appointment-name" type="text" name="name" placeholder="Борода" />
-                                                    {nameValue && <img className="Information__clear" src={imgClear} onClick={() => setNameValue('')} /> }</p>
-                                                </div>
-                                    
-                                                <div className="sign__form-item firth">
-                                                    <p class="appointment__item"> 
-                                                    <label for="appointment-phone">Телефон</label>
-                                                    <input onChange={onInputTel} value={telValue} id="appointment-phone" type="tel" name="phone" placeholder="+7 232 323-23-23" inputmode="tel"/>
-                                                    {telValue && <img className="Information__clear" src={imgClear} onClick={() => setTelValue('')} /> }</p>
-                                                </div>
+                            <div className="sign">
+                                
+                                <div className="sign__form">
+                                    <form className="appointment_form" action="" method="POST">
+                                        <div className="sign__item-h3"><h3> записаться </h3></div>
+
+                                        <div>
+                                        <div className="sign__item-p">
+                                            <p className="appointment_info"> укажите желаемую дату и время и мы свяжемся с вами для подтверждения брони</p>
+                                        </div>
+                                        <div className="sign__form-wrapper">
+
+                                        
+
+                                            <div className="sign__form-item first">
+                                                <p class="appointment__item" >
+                                                <label for="appointment-date">Дата</label>
+                                                <input onChange={onInputDate} value={dateValue} id="appointment-date" type="date" name="date" /></p>
                                             </div>
-                                            <div className="sign__button"><button className="sign__button-item" type="submit"> Отправить </button></div>
-                                        </form>
-                                    </div>
+                                
+                                            <div className="sign__form-item second">
+                                                <p class="appointment__item">  
+                                                <label for="appointment-time">Время</label>
+                                                <input onChange={onInputTime} value={timeValue} id="appointment-time" type="time" name="time" /></p>
+                                            </div>
+                                
+                                            <div className="sign__form-item third">
+                                                <p class="appointment__item">  
+                                                <label for="appointment-name">Ваше имя</label>
+                                                <input onChange={onInputName} value={nameValue} id="appointment-name" type="text" name="name" placeholder="Борода" />
+                                                {nameValue && <img className="Information__clear" src={imgClear} onClick={() => setNameValue('')} /> }</p>
+                                            </div>
+                                
+                                            <div className="sign__form-item firth">
+                                                <p class="appointment__item"> 
+                                                <label for="appointment-phone">Телефон</label>
+                                                <input onChange={onInputTel} value={telValue} id="appointment-phone" type="tel" name="phone" placeholder="+7 232 323-23-23" inputmode="tel"/>
+                                                {telValue && <img className="Information__clear" src={imgClear} onClick={() => setTelValue('')} /> }</p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div className="sign__button"><button className="sign__button-item" type="submit"> Отправить </button></div>
+                                    </form>
                                 </div>
+                                
                             </div>
 
                         </div>

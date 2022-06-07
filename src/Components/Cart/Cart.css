@@ -131,6 +131,16 @@
     padding-bottom: 8%;
 }
 
+.drawer__priceCount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.drawer__priceCount > p {
+    font-size: 1.2em;
+}
+
   
 .drawer__button__buy:hover {
     background-color: white;

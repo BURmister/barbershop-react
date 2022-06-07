@@ -21,7 +21,7 @@ function Header(props) {
                             </div>
                         </div>
                         <div className="nav__item">
-                            <div className="enter-cart__wrapper nav__enter">
+                            <div onClick={props.overflowHidden} className="enter-cart__wrapper nav__enter">
                                 <li onClick={props.clickOnCart} className="nav__enter-item"  >   
                                     <svg fill="none" height="27" viewBox="0 0 30 27" width="25" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1.39999 1.70001H6.60001" stroke="#ffffff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
