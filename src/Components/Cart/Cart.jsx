@@ -12,12 +12,17 @@ function Cart(props) {
         props.clickOnClose();
     }
 
-    let priceCount = 0
+    // let priceCount = 0
 
-    const priceCounter = (price) => {
-        priceCount = priceCount + Number(price)
-        console.log(priceCount)
-        return ( priceCount )
+    // const priceCounter = (price) => {
+    //     priceCount = priceCount + Number(price)
+    //     console.log(priceCount)
+    //     return ( priceCount )
+    // }
+
+    const onRemoveItem =(id) => {
+        axios.delete(`https://6241abd3042b562927a77458.mockapi.io/itemsOfCart/${id}`);
+        props.setCartItems(prev => prev.filter(item => item.id !== id));
     }
 
     return(
@@ -39,14 +44,18 @@ function Cart(props) {
                             <div className="content__wrapper">
                                 {props.cartItems
                                     .map((item) => (
-                                        <DrawerCard id={item.id} title={item.title} price={item.price} priceCounter={(price) => priceCounter(price)} />
+                                        <DrawerCard id={item.id} title={item.title} price={item.price}
+                                        //  priceCounter={(price) => priceCounter(price)} 
+                                         onRemoveItem={(id) => onRemoveItem(id)} />
                                 ))}
                             </div>
                         </div>
 
                         <div className="drawer__container__footer">
                             <div className="drawer__footer">
-                                <div className="drawer__priceCount"><p>итого к оплате:</p> <p> {priceCount} ₽</p></div>
+                                <div className="drawer__priceCount"><p>итого к оплате:</p> <p>
+                                     {/* {priceCount}  */}
+                                     ₽</p></div>
                                 <button className=" button drawer__button__buy">оформление заказа</button>
                             </div>
                         </div>

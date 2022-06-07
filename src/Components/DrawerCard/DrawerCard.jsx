@@ -7,7 +7,7 @@ import iconPlus from '../imgs/plus.svg'
 import iconMinus from '../imgs/minus.svg'
 
 
-function DrawerCard({id, title, img, price, amount, priceCounter, priceCount}) {
+function DrawerCard({id, title, img, price, amount, priceCounter, priceCount, onRemoveItem}) {
 
     const [userAmount, setUserAmount] = React.useState(1);
 
@@ -22,13 +22,14 @@ function DrawerCard({id, title, img, price, amount, priceCounter, priceCount}) {
 
     const cardId = id
 
-    const onClickX = (cardId) => {
-        axios.delete(`https://6241abd3042b562927a77458.mockapi.io/itemsOfCart:${cardId}`)
-    }
-
     let userPrice = Number(price)*userAmount
 
-    priceCounter(price)
+    // priceCounter(price)
+
+    const onRemove = () => {
+        onRemoveItem(cardId)
+        setUserAmount(userAmount - 1)
+    }
 
 
     return(
@@ -47,7 +48,7 @@ function DrawerCard({id, title, img, price, amount, priceCounter, priceCount}) {
                     <li className="drawerCard__li drawerCard__props-price">{userPrice} ₽</li>
                 </div> 
                 <div className="drawerCard__item__count">
-                    <div className="drawerCard__akor__wrapper"><button onClick={() => setUserAmount(userAmount - 1)} className="button buttonInCart button__buy">{ iconDelete ? <img onClick={onClickX(cardId)} className="drawerCard__delete-item" src={iconDeleteItem} ></img> : <img src={iconMinus} ></img>}</button></div>
+                    <div className="drawerCard__akor"><button onClick={() => onRemove()} className="button buttonInCart button__buy">{ iconDelete ? <img className="drawerCard__delete-item" src={iconDeleteItem} ></img> : <img src={iconMinus} ></img>}</button></div>
                     <div className="drawerCard__amount__wrapper"><li>{userAmount}</li></div>
                     <div className="drawerCard__akor__wrapper"><button onClick={() => setUserAmount(userAmount + 1)} className="button buttonInCart button__buy"><img src={iconPlus} ></img></button></div>
                 </div>

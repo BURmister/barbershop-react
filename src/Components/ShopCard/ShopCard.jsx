@@ -19,7 +19,7 @@ function ShopCard({title, img, price, onPlus}) {
                 <li class="slider__li"><a href="../барбершоп/shop-item.html">{title}</a></li>
             </div>
             <div class="item__price">
-                <div class="price__wrapper"><li>{price}</li></div>
+                <div class="price__wrapper"><li>{price} ₽</li></div>
                 <div onClick={onClickPlus} class="akor__wrapper"> 
                     {   
                         cardIcon ? 
