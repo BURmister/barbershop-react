@@ -7,6 +7,12 @@ import DrawerCard from '../DrawerCard/DrawerCard'
 
 function Cart(props) {
 
+    React.useEffect(() => {
+        axios.get('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart').then((res) => {
+          props.setCartItems(res.data)
+        })
+      }, [])
+
     const onClickClose = () => {
         props.normalOverflow();
         props.clickOnClose();
@@ -22,7 +28,8 @@ function Cart(props) {
 
     const onRemoveItem =(id) => {
         axios.delete(`https://6241abd3042b562927a77458.mockapi.io/itemsOfCart/${id}`);
-        props.setCartItems(prev => prev.filter(item => item.id !== id));
+        props.setCartItems((prev) => prev.filter(item => item.id !== id));
+        console.log(id)
     }
 
     return(
@@ -44,9 +51,13 @@ function Cart(props) {
                             <div className="content__wrapper">
                                 {props.cartItems
                                     .map((item) => (
-                                        <DrawerCard id={item.id} title={item.title} price={item.price}
+                                        <DrawerCard 
+                                         id={item.id}
+                                         code={item.code}
+                                         title={item.title}
+                                         price={item.price}
                                         //  priceCounter={(price) => priceCounter(price)} 
-                                         onRemoveItem={(id) => onRemoveItem(id)} />
+                                         onRemoveItem={onRemoveItem} />
                                 ))}
                             </div>
                         </div>

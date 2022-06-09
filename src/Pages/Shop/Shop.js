@@ -13,7 +13,7 @@ function Shop(props) {
 
     React.useEffect(() => {
         props.isHeader();       
-    })
+    }, [])
 
     // <a href="../барбершоп/shop-item.html"><img className="slider__img" src="../барбершоп/imgs/Layer 38.png" alt="" width="220px" height="165px" /></a>
     // <a href="../барбершоп/shop-item.html"><img className="slider__img" src="../барбершоп/imgs/Layer 30.png" alt="" /></a>
@@ -28,9 +28,10 @@ function Shop(props) {
         setSearchValue(event.target.value);
     }
 
-    const addToCart = (obj) => {
-        axios.post('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart', obj);
-        props.setCartItems(prev => [...prev, obj]);
+    const addToCart = ( obj) => {
+        axios.post('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart', obj)
+        props.setCartItems((prev) => [...prev, obj]);
+        console.log(obj)
     }
 
     return(
@@ -133,12 +134,12 @@ function Shop(props) {
                             <div className="shop__list-slider">
                                 {props.shopCards
                                     .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))                                    
-                                    .map((item, index) => (
+                                    .map((item) => (
                                     <ShopCard 
-                                        index={index} 
+                                        
+                                        code={item.code}
                                         img={item.img} 
                                         title={item.title} 
-                                        li={item.li} 
                                         price={item.price} 
                                         onPlus={(obj) => addToCart(obj)}
                                     /> 

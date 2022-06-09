@@ -6,7 +6,7 @@ function Contacts(props) {
 
     React.useEffect(() => {
         props.isHeader()
-    })
+    }, [])
 
     return(
         <div classNameName="Contacts__main"> 

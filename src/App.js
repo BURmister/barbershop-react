@@ -25,13 +25,10 @@ import Contacts from './Pages/Contacts/Contacts';
 function App() {
 
   React.useEffect(() => {
-    axios.get('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart').then(res => {
-      setCartItems(res.data)
-    })
-    axios.get('https://6241abd3042b562927a77458.mockapi.io/goods').then(res => {
+    axios.get('https://6241abd3042b562927a77458.mockapi.io/goods').then((res) => {
       setShopCards(res.data)
     })
-    axios.get('https://6241abd3042b562927a77458.mockapi.io/news').then(res => {
+    axios.get('https://6241abd3042b562927a77458.mockapi.io/news').then((res) => {
       setNewsCards(res.data)
     })
   }, [])

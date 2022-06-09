@@ -10,7 +10,7 @@ function News(props) {
 
     React.useEffect(() => {
         props.isHeader()
-    })
+    }, [])
     
 
     return(

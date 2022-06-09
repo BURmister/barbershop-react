@@ -20,16 +20,10 @@ function DrawerCard({id, title, img, price, amount, priceCounter, priceCount, on
         iconDelete = false
     }
 
-    const cardId = id
-
     let userPrice = Number(price)*userAmount
 
     // priceCounter(price)
-
-    const onRemove = () => {
-        onRemoveItem(cardId)
-        setUserAmount(userAmount - 1)
-    }
+   
 
 
     return(
@@ -48,9 +42,9 @@ function DrawerCard({id, title, img, price, amount, priceCounter, priceCount, on
                     <li className="drawerCard__li drawerCard__props-price">{userPrice} ₽</li>
                 </div> 
                 <div className="drawerCard__item__count">
-                    <div className="drawerCard__akor"><button onClick={() => onRemove()} className="button buttonInCart button__buy">{ iconDelete ? <img className="drawerCard__delete-item" src={iconDeleteItem} ></img> : <img src={iconMinus} ></img>}</button></div>
+                    <div className="drawerCard__akor"><button onClick={() => onRemoveItem(id)} className="button buttonInCart button__buy">{ iconDelete ? <img className="drawerCard__delete-item" src={iconDeleteItem} ></img> : <img src={iconMinus} ></img>}</button></div>
                     <div className="drawerCard__amount__wrapper"><li>{userAmount}</li></div>
-                    <div className="drawerCard__akor__wrapper"><button onClick={() => setUserAmount(userAmount + 1)} className="button buttonInCart button__buy"><img src={iconPlus} ></img></button></div>
+                    <div className="drawerCard__akor__wrapper"><button /*onClick={() => setUserAmount(userAmount + 1)}*/ className="button buttonInCart button__buy"><img src={iconPlus} ></img></button></div>
                 </div>
             </div>
 

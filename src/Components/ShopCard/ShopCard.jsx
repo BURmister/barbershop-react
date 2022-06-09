@@ -3,13 +3,13 @@ import "./ShopCard.css"
 import iconPlus from '../imgs/plus.svg'
 import iconCheck from '../imgs/check.svg'
 
-function ShopCard({title, img, price, onPlus}) {
+function ShopCard({id, code, title, img, price, onPlus}) {
 
     const [cardIcon, setCardIcon ] = React.useState(true)
 
     const onClickPlus = () => {
         setCardIcon(!cardIcon)
-        onPlus({title, img, price })
+        onPlus({id, code, title, img, price })
     }
 
     return(

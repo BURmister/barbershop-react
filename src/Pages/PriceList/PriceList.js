@@ -9,7 +9,7 @@ function PriceList(props) {
 
     React.useEffect(() => {
         props.isHeader()
-    })
+    }, [])
 
     return (
         <div className="PriceList__main">
