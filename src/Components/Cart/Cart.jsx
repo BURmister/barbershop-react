@@ -11,7 +11,7 @@ function Cart(props) {
         axios.get('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart').then((res) => {
           props.setCartItems(res.data)
         })
-      }, [])
+    }, [])
 
     const onClickClose = () => {
         props.normalOverflow();
@@ -26,10 +26,14 @@ function Cart(props) {
     //     return ( priceCount )
     // }
 
-    const onRemoveItem =(id) => {
-        axios.delete(`https://6241abd3042b562927a77458.mockapi.io/itemsOfCart/${id}`);
-        props.setCartItems((prev) => prev.filter(item => item.id !== id));
-        console.log(id)
+    const onRemoveItem = (id) => {
+        try {
+            axios.delete(`https://6241abd3042b562927a77458.mockapi.io/itemsOfCart/${id}`);
+            props.setCartItems((prev) => prev.filter(item => item.id !== id));
+            console.log(id)
+        } catch (error) {
+            alert("не удалось обработать запрос")
+        }
     }
 
     return(

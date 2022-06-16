@@ -9,7 +9,7 @@ function Contacts(props) {
     }, [])
 
     return(
-        <div classNameName="Contacts__main"> 
+        <div className="Contacts__main"> 
 
 
             <div className="News__logo__wrapper">
@@ -28,8 +28,8 @@ function Contacts(props) {
 
             <div className="animation__main">
                 <div className="Contacts__inner__container">
-                    <div className="">
-                        <div className="Contacts__h2"><h2>обратная связь</h2></div>
+                    <div className="Contacts__info">
+                        <div className="Contacts__h2"><h2>как нас найти</h2></div>
                         <div className="Contacts__wrapper">
                             <div className="Contacts">
                                 <div className="Contacts__item-h3"><h3> основная информация </h3></div>
@@ -51,6 +51,12 @@ function Contacts(props) {
                                 </div>
                             </div>    
 
+                            <div className="Contacts__map">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.6037872533238!2d30.320858716140034!3d59.938716481876206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310fca145cc1%3A0x42b32648d8238007!2z0JHQvtC70YzRiNCw0Y8g0JrQvtC90Y7RiNC10L3QvdCw0Y8g0YPQuy4sIDE5LzgsINCh0LDQvdC60YIt0J_QtdGC0LXRgNCx0YPRgNCzLCAxOTExODY!5e0!3m2!1sru!2sru!4v1654804363277!5m2!1sru!2sru"
+                                    width="90%" height="90%" >
+                                </iframe>
+                            </div>
                         </div> 
                     </div>
                 </div>

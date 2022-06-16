@@ -5,14 +5,21 @@ import axios from 'axios'
 
 import './Information.css'
 import NewsCard from '../../Components/NewsCard/NewsCard'
+import Carousel from '../../Components/Carousel/Carousel'
 
 
 import imgShape from './imgs/Shape 1.svg'
 import imgLogo from './imgs/index-logo.svg'
-import imgCarousel from './imgs/Object.png'
+import imgCarousel__1 from './imgs/Object.png'
+import imgCarousel__2 from './imgs/squad.jpg'
 import imgClear from './imgs/clear.svg'
 
 function Information(props) {
+
+    //проверка на хедер
+    React.useEffect(() => {
+        props.isHeader()
+        }, [] )
 
     //контролируемые инпуты
     //input date
@@ -40,15 +47,13 @@ function Information(props) {
     }
 
 
-    //проверка на хедер
-    //запрос на бэкенд с целью получить новости
-    React.useEffect(() => {
-        props.isHeader()
-    })
-
-    const clickOnMap = () => {
-        props.overflowHidden();
-        props.clickOnMap();
+    const addNote = ({dateValue, timeValue, nameValue, telValue}) => {
+        try {
+            axios.post('https://6241abd3042b562927a77458.mockapi.io/notes', {dateValue, timeValue, nameValue, telValue})
+            alert('ваша завка успешно отправлена')
+        } catch (error) {
+            alert("не удалось обработать запрос")
+        }
     }
 
 
@@ -91,9 +96,11 @@ function Information(props) {
                         <div className="news"> 
                             <div className="news__item-h3"><h3> новости </h3></div>
 
-                            {props.newsCards.slice(0, 2).map((obj) => (
-                                <NewsCard li={obj.li} date={obj.date} /> 
-                            ))}
+                            <div>
+                                {props.newsCards.slice(0, 2).map((obj) => (
+                                    <NewsCard li={obj.li} date={obj.date} /> 
+                                ))}
+                            </div>
 
                             <Link to="/News" ><div className="news__button"><a className="news_button akor"> все новости </a></div></Link>
                         </div>
@@ -101,15 +108,27 @@ function Information(props) {
                         {/* КАРУСЕЛЬ ЗДЕСЬ */}
                         <div className="gallery">
                             <div className="gallery__item-h3"><h3> фотогалерея </h3></div>
-                            <div className="gallery__wrapperr">
-                                <div className="gallery__item-img"><img src={imgCarousel} alt="" /></div>
+                                <div className="gallery__wrapperr">
 
-                                {/* КНОПКИ ДЛЯ КАРУСЕЛИ */}
-                                <div className="gallery__buttons">
-                                    <div className="gallery__button-back"><button className="button gallery_button_back" type="button"> назад </button></div>
-                                    <div className="gallery__button-next"><button className="button gallery_button_next" type="button"> вперед </button></div>
-                                </div>
-                            </div>
+                                    {/* <div className="slider">
+                                        <div className="slider-line">
+                                            <img className="gallery__item-img" src={imgCarousel__1} alt="" />
+                                            <img className="gallery__item-img" src={imgCarousel__2} alt="" />  
+                                        </div>
+                                    </div> */}
+
+                                    <Carousel>
+                                        <div className="item item-1"><img className="gallery__item-img" src={imgCarousel__1} alt="" /></div>
+                                        <div className="item item-1"><img className="gallery__item-img" src={imgCarousel__2} alt="" /> </div>
+                                        <div>Item-1</div>
+                                        <div>Item-2</div>
+                                        <div>Item-3</div>
+
+                                    </Carousel>
+                                                                         
+                                    
+                                    
+                            </div>                           
                         </div>    
                                       
                     </div>
@@ -141,46 +160,46 @@ function Information(props) {
                             <div className="sign">
                                 
                                 <div className="sign__form">
-                                    <form className="appointment_form" action="" method="POST">
+                                    <div className="appointment_form">
                                         <div className="sign__item-h3"><h3> записаться </h3></div>
 
                                         <div>
-                                        <div className="sign__item-p">
-                                            <p className="appointment_info"> укажите желаемую дату и время и мы свяжемся с вами для подтверждения брони</p>
-                                        </div>
-                                        <div className="sign__form-wrapper">
+                                            <div className="sign__item-p">
+                                                <p className="appointment_info"> укажите желаемую дату и время и мы свяжемся с вами для подтверждения брони</p>
+                                            </div>
+                                            <div className="sign__form-wrapper">
 
-                                        
+                                            
 
-                                            <div className="sign__form-item first">
-                                                <p class="appointment__item" >
-                                                <label for="appointment-date">Дата</label>
-                                                <input onChange={onInputDate} value={dateValue} id="appointment-date" type="date" name="date" /></p>
-                                            </div>
-                                
-                                            <div className="sign__form-item second">
-                                                <p class="appointment__item">  
-                                                <label for="appointment-time">Время</label>
-                                                <input onChange={onInputTime} value={timeValue} id="appointment-time" type="time" name="time" /></p>
-                                            </div>
-                                
-                                            <div className="sign__form-item third">
-                                                <p class="appointment__item">  
-                                                <label for="appointment-name">Ваше имя</label>
-                                                <input onChange={onInputName} value={nameValue} id="appointment-name" type="text" name="name" placeholder="Борода" />
-                                                {nameValue && <img className="Information__clear" src={imgClear} onClick={() => setNameValue('')} /> }</p>
-                                            </div>
-                                
-                                            <div className="sign__form-item firth">
-                                                <p class="appointment__item"> 
-                                                <label for="appointment-phone">Телефон</label>
-                                                <input onChange={onInputTel} value={telValue} id="appointment-phone" type="tel" name="phone" placeholder="+7 232 323-23-23" inputmode="tel"/>
-                                                {telValue && <img className="Information__clear" src={imgClear} onClick={() => setTelValue('')} /> }</p>
+                                                <div className="sign__form-item first">
+                                                    <p class="appointment__item" >
+                                                    <label for="appointment-date">Дата</label>
+                                                    <input onChange={onInputDate} value={dateValue} id="appointment-date" type="date" name="date" /></p>
+                                                </div>
+                                    
+                                                <div className="sign__form-item second">
+                                                    <p class="appointment__item">  
+                                                    <label for="appointment-time">Время</label>
+                                                    <input onChange={onInputTime} value={timeValue} id="appointment-time" type="time" name="time" /></p>
+                                                </div>
+                                    
+                                                <div className="sign__form-item third">
+                                                    <p class="appointment__item">  
+                                                    <label for="appointment-name">Ваше имя</label>
+                                                    <input onChange={onInputName} value={nameValue} id="appointment-name" type="text" name="name" placeholder="Борода" />
+                                                    {nameValue && <img className="Information__clear" src={imgClear} onClick={() => setNameValue('')} /> }</p>
+                                                </div>
+                                    
+                                                <div className="sign__form-item firth">
+                                                    <p class="appointment__item"> 
+                                                    <label for="appointment-phone">Телефон</label>
+                                                    <input onChange={onInputTel} value={telValue} id="appointment-phone" type="tel" name="phone" placeholder="+7 232 323-23-23" inputmode="tel"/>
+                                                    {telValue && <img className="Information__clear" src={imgClear} onClick={() => setTelValue('')} /> }</p>
+                                                </div>
                                             </div>
                                         </div>
-                                        </div>
-                                        <div className="sign__button"><button className="sign__button-item" type="submit"> Отправить </button></div>
-                                    </form>
+                                        <div className="sign__button"><button onClick={() => addNote({dateValue, timeValue, nameValue, telValue})} className="sign__button-item"> Отправить </button></div>
+                                    </div>
                                 </div>
                                 
                             </div>

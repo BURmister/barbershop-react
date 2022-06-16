@@ -12,7 +12,10 @@ import iconClear from './imgs/clear.svg'
 function Shop(props) {
 
     React.useEffect(() => {
-        props.isHeader();       
+        props.isHeader(); 
+        axios.get('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart').then((res) => {
+        props.setCartItems(res.data)
+        })
     }, [])
 
     // <a href="../барбершоп/shop-item.html"><img className="slider__img" src="../барбершоп/imgs/Layer 38.png" alt="" width="220px" height="165px" /></a>
@@ -28,10 +31,18 @@ function Shop(props) {
         setSearchValue(event.target.value);
     }
 
-    const addToCart = ( obj) => {
-        axios.post('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart', obj)
-        props.setCartItems((prev) => [...prev, obj]);
-        console.log(obj)
+    const addToCart = async (obj) => {
+        try {
+            if(props.cartItems.find((item) => item.code === obj.code )) {
+                alert('товар уже в вашей корзине )')
+            } else {
+                const { data } = await axios.post('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart', obj)
+                props.setCartItems((prev) => [...prev, data]);
+            }
+            console.log(obj)
+        } catch (error) {
+            alert('товар не получилось добавить')
+        }
     }
 
     return(
@@ -134,9 +145,10 @@ function Shop(props) {
                             <div className="shop__list-slider">
                                 {props.shopCards
                                     .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))                                    
-                                    .map((item) => (
+                                    .map((item, index) => (
                                     <ShopCard 
-                                        
+                                        id={item.id}
+                                        key={index}
                                         code={item.code}
                                         img={item.img} 
                                         title={item.title} 
