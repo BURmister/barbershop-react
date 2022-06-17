@@ -10,9 +10,12 @@ import Carousel from '../../Components/Carousel/Carousel'
 
 import imgShape from './imgs/Shape 1.svg'
 import imgLogo from './imgs/index-logo.svg'
+import imgClear from './imgs/clear.svg'
 import imgCarousel__1 from './imgs/Object.png'
 import imgCarousel__2 from './imgs/squad.jpg'
-import imgClear from './imgs/clear.svg'
+import imgCarousel__3 from './imgs/gwen.jpg'
+import imgCarousel__4 from './imgs/gwen-filter.jpg'
+import imgCarousel__5 from './imgs/nervyOnRoof.jpg'
 
 function Information(props) {
 
@@ -118,15 +121,13 @@ function Information(props) {
                                     </div> */}
 
                                     <Carousel>
-                                        <div className="item item-1"><img className="gallery__item-img" src={imgCarousel__1} alt="" /></div>
-                                        <div className="item item-1"><img className="gallery__item-img" src={imgCarousel__2} alt="" /> </div>
-                                        <div>Item-1</div>
-                                        <div>Item-2</div>
-                                        <div>Item-3</div>
-
-                                    </Carousel>
-                                                                         
-                                    
+                                        <div className="item-gallery"><img className="gallery__item-img" src={imgCarousel__4} alt="" /></div>
+                                        <div className="item-gallery"><img className="gallery__item-img" src={imgCarousel__1} alt="" /> </div>
+                                        <div className="item-gallery"><img className="gallery__item-img" src={imgCarousel__2} alt="" /> </div>
+                                        <div className="item-gallery"><img className="gallery__item-img" src={imgCarousel__3} alt="" /> </div>
+                                        <div className="item-gallery"><img className="gallery__item-img" src={imgCarousel__5} alt="" /> </div>
+                                    </Carousel>                              
+                    
                                     
                             </div>                           
                         </div>    
