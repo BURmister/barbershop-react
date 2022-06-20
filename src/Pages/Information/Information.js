@@ -52,7 +52,7 @@ function Information(props) {
 
     const addNote = ({dateValue, timeValue, nameValue, telValue}) => {
         try {
-            axios.post('https://6241abd3042b562927a77458.mockapi.io/notes', {dateValue, timeValue, nameValue, telValue})
+            axios.post('https://6241abd3042b562927a77458.mockapi.io/notes', {category: "record", dateValue, timeValue, nameValue, telValue})
             alert('ваша завка успешно отправлена')
         } catch (error) {
             alert("не удалось обработать запрос")

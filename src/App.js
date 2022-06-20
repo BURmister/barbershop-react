@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
+import AppContext from './Components/Context/Context'
 
 // import different Components to render 
 import Header from './Components/Header/Header';
@@ -25,12 +25,17 @@ import Contacts from './Pages/Contacts/Contacts';
 function App() {
 
   React.useEffect(() => {
-    axios.get('https://6241abd3042b562927a77458.mockapi.io/goods').then((res) => {
-      setShopCards(res.data)
-    })
-    axios.get('https://6241abd3042b562927a77458.mockapi.io/news').then((res) => {
-      setNewsCards(res.data)
-    })
+    async function fetchData() {
+      setLoading(true)
+      await axios.get('https://6241abd3042b562927a77458.mockapi.io/goods').then((res) => {
+        setShopCards(res.data)
+      })
+      await axios.get('https://6241abd3042b562927a77458.mockapi.io/news').then((res) => {
+        setNewsCards(res.data)
+      })
+      setLoading(false)
+    }
+    fetchData()
   }, [])
 
   const [login, setLogin] = React.useState(false);
@@ -44,48 +49,49 @@ function App() {
   const [cartItems, setCartItems] = React.useState([])
   const [newsCards, setNewsCards] = React.useState([])  
 
+  const [loading, setLoading] = React.useState(true)
+
   function overflowHidden() {
     document.body.classList.toggle("overflowHidden")
   }
 
-  if(cart) {
-    overflowHidden()
-  }
 
   return (
-    <div> 
+    <AppContext.Provider value={{isHeader, setIsHeader, cart, setCart, shopCards, cartItems, setCartItems, newsCards, loading, overflowHidden}}>
+      <div> 
 
-      {cart ? <Cart normalOverflow={() => overflowHidden()} clickOnClose={() => setCart(false)} stateOfCart={cart} cartItems={cartItems} setCartItems={setCartItems}   /> : null}
-
-
-      {login && <Login normalOverflow={() => overflowHidden()} clickOnClose={() => setLogin(false)}/>}
-      {map && <Map normalOverflow={() => overflowHidden()} clickOnClose={() => setMap(false)} />}
+        {cart ? <Cart normalOverflow={() => overflowHidden()} clickOnClose={() => setCart(false)} stateOfCart={cart} cartItems={cartItems} setCartItems={setCartItems}   /> : null}
 
 
-      {isHeader ? 
-        <Header overflowHidden={() => overflowHidden()} clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)} /> : 
-        <Header2 overflowHidden={() => overflowHidden()} clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)}/>
-      }
-       
+        {login && <Login normalOverflow={() => overflowHidden()} clickOnClose={() => setLogin(false)}/>}
+        {map && <Map normalOverflow={() => overflowHidden()} clickOnClose={() => setMap(false)} />}
 
-      <div className="main" onClick={() => setLogin(false)} >
+
+        {isHeader ? 
+          <Header overflowHidden={() => overflowHidden()} clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)} /> : 
+          <Header2 overflowHidden={() => overflowHidden()} clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)}/>
+        }
         
-        <Routes>
+
+        <div className="main" onClick={() => setLogin(false)} >
           
-          <Route path="/" element={<Information normalOverflow={() => overflowHidden()} overflowHidden={() => overflowHidden()} newsCards={newsCards} isHeader={() => setIsHeader(true)} clickOnMap={() => setMap(true)} clickOnCloseMap={() => setMap(false)}  />} exact />
-          <Route path="/Price-List" element={<PriceList isHeader={() => setIsHeader(false)}/>} />
-          <Route path="/News" element={<News newsCards={newsCards} isHeader={() => setIsHeader(false)}/>} />
-          <Route path="/Shop" element={<Shop isHeader={() => setIsHeader(false)} shopCards={shopCards} cartItems={cartItems} setCartItems={setCartItems}/>} />
-          <Route path="/Contacts" element={<Contacts isHeader={() => setIsHeader(false)}/>} />
+          <Routes>
+            
+            <Route path="/" element={<Information normalOverflow={() => overflowHidden()} overflowHidden={() => overflowHidden()} newsCards={newsCards} isHeader={() => setIsHeader(true)} clickOnMap={() => setMap(true)} clickOnCloseMap={() => setMap(false)}  />} exact />
+            <Route path="/Price-List" element={<PriceList isHeader={() => setIsHeader(false)}/>} />
+            <Route path="/News" element={<News newsCards={newsCards} isHeader={() => setIsHeader(false)}/>} />
+            <Route path="/Shop" element={<Shop isHeader={() => setIsHeader(false)}/>} />
+            <Route path="/Contacts" element={<Contacts isHeader={() => setIsHeader(false)}/>} />
 
-        </Routes>
-        
-      </div> 
+          </Routes>
+          
+        </div> 
 
 
-      <Footer />
+        <Footer />
 
-    </div>
+      </div>
+    </AppContext.Provider>
   );
 }
 

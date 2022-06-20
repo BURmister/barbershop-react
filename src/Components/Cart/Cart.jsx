@@ -5,6 +5,9 @@ import axios from 'axios'
 import iconClear from '../imgs/clear.svg'
 import DrawerCard from '../DrawerCard/DrawerCard'
 
+const delay = () => new Promise((resolve) => setTimeout(resolve, 1000))
+
+
 function Cart(props) {
 
     React.useEffect(() => {
@@ -12,6 +15,8 @@ function Cart(props) {
           props.setCartItems(res.data)
         })
     }, [])
+
+    const [loading, setLoading] = React.useState(false)
 
     const onClickClose = () => {
         props.normalOverflow();
@@ -25,6 +30,23 @@ function Cart(props) {
     //     console.log(priceCount)
     //     return ( priceCount )
     // }
+
+    const addNote = async (cartItems) => {
+        try { 
+            setLoading(true)
+            await axios.post('https://6241abd3042b562927a77458.mockapi.io/notes', {category: "order", cartItems})
+            for (let i = 0; i < cartItems.length; i++) {
+                const item = cartItems[i];
+                await axios.delete('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart/' + item.id)
+                await delay()
+            }
+            props.setCartItems([])
+            alert('ваш заказ оформлен')           
+        } catch (error) {
+            alert("не удалось обработать запрос")
+        }
+        setLoading(false)
+    }
 
     const onRemoveItem = (id) => {
         try {
@@ -43,6 +65,8 @@ function Cart(props) {
 
                 <div onClick={onClickClose} className="drawer__shadow" ></div>
 
+                
+
                 <div className={`drawer ${props.stateOfCart ? 'show' : 'hide'} `}> 
                     <div className="drawer__flex">
                         
@@ -53,6 +77,11 @@ function Cart(props) {
 
                         <div className="drawer__content">
                             <div className="content__wrapper">
+                                {loading 
+                                    &&  <svg class="spinner" viewBox="0 0 50 50">
+                                            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                                        </svg>
+                                }
                                 {props.cartItems
                                     .map((item) => (
                                         <DrawerCard 
@@ -71,15 +100,22 @@ function Cart(props) {
                                 <div className="drawer__priceCount"><p>итого к оплате:</p> <p>
                                      {/* {priceCount}  */}
                                      ₽</p></div>
-                                <button className=" button drawer__button__buy">оформление заказа</button>
+                                <button disabled={loading} onClick={() => addNote(props.cartItems)} className=" button drawer__button__buy">оформление заказа</button>
                             </div>
                         </div>
 
+                        {loading && <div className="drawer__loading"></div>}
+
                     </div>
 
+                    
                 </div>
 
+                
+
+
             </div> 
+            
 
         </div>
     )

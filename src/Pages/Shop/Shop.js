@@ -2,7 +2,7 @@ import React from 'react'
 import './Shop.css'
 import axios from 'axios'   
 import { Link } from 'react-router-dom'
-
+import AppContext from '../../Components/Context/Context'
 
 
 import ShopCard from '../../Components/ShopCard/ShopCard'
@@ -11,10 +11,12 @@ import iconClear from './imgs/clear.svg'
 
 function Shop(props) {
 
+    const { cartItems, setCartItems, shopCards, loading } = React.useContext(AppContext)
+
     React.useEffect(() => {
         props.isHeader(); 
         axios.get('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart').then((res) => {
-        props.setCartItems(res.data)
+        setCartItems(res.data)
         })
     }, [])
 
@@ -31,19 +33,50 @@ function Shop(props) {
         setSearchValue(event.target.value);
     }
 
+    const [filterValue, setFilterValue] = React.useState('');
+
+    const onFilterInput = (event) => {
+        setSearchValue(event.target.value);
+    }
+
     const addToCart = async (obj) => {
         try {
-            if(props.cartItems.find((item) => item.code === obj.code )) {
+            if(cartItems.find((item) => item.code === obj.code )) {
                 alert('товар уже в вашей корзине )')
             } else {
                 const { data } = await axios.post('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart', obj)
-                props.setCartItems((prev) => [...prev, data]);
+                setCartItems((prev) => [...prev, data]);
             }
             console.log(obj)
         } catch (error) {
             alert('товар не получилось добавить')
         }
+    } 
+
+    const loadingCards = [{}, {}, {}, {}, {}, {}, {}, {}, {}]
+
+    const renderItems = () => {
+        return (
+            loading 
+            ?   loadingCards 
+            :   shopCards
+                .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+                .filter((item) => item.title.toLowerCase().includes(filterValue.toLowerCase())) 
+        )                                      
+        .map((item, index) => (
+        <ShopCard 
+            id={item.id}
+            key={index}
+            code={item.code}
+            img={item.img} 
+            title={item.title} 
+            price={item.price} 
+            onPlus={(obj) => addToCart(obj)}
+            loading={props.loading}
+        /> 
+        ))
     }
+ 
 
     return(
         <div classNameName="Contacts__main"> 
@@ -83,32 +116,32 @@ function Shop(props) {
                                 <form className="firmS__form" action="#">
                                     <div className="firmS__wrapper">
                                         <label className="login__checkbox label__s">
-                                            <input type="checkbox" value='Baxter of California' name="remember" className="visually__hidden"/>
+                                            <input onClick={() => setFilterValue(filterValue +'Baxter of California')} id="checkbox" type="checkbox" value='Baxter of California' name="remember" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Baxter of California
                                         </label>
                                         <label className="login__checkbox label__s">
-                                            <input type="checkbox"value="Mr Natty" name="remember" className="visually__hidden"/>
+                                            <input onClick={() => setFilterValue(filterValue + 'Mr Natty')} id="checkbox" type="checkbox"value="Mr Natty" name="remember" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Mr Natty
                                         </label>
                                         <label className="login__checkbox label__s">
-                                            <input type="checkbox" value="Suavecito" name="remember" className="visually__hidden"/>
+                                            <input onClick={() => setFilterValue(filterValue + 'Suavecito')} id="checkbox" type="checkbox" value="Suavecito" name="remember" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Suavecito
                                         </label>
                                         <label className="login__checkbox label__s">
-                                            <input type="checkbox" value="Malin+Goetz" name="remember" className="visually__hidden"/>
+                                            <input onClick={() => setFilterValue(filterValue + 'Malin+Goetz')}id="checkbox" type="checkbox" value="Malin+Goetz" name="remember" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Malin+Goetz
                                         </label>
                                         <label className="login__checkbox label__s">
-                                            <input type="checkbox" value="Murray's" name="remember" className="visually__hidden"/>
+                                            <input onClick={() => setFilterValue(filterValue + "Murray's")} id="checkbox" type="checkbox" value="Murray's" name="remember" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Murray's     
                                         </label>
                                         <label className="login__checkbox label__s">
-                                            <input type="checkbox" value="American Crew" name="remember" className="visually__hidden"/>
+                                            <input onClick={() => setFilterValue(filterValue + 'American Crew')}id="checkbox" type="checkbox" value="American Crew" name="remember" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             American Crew
                                         </label>
@@ -143,20 +176,7 @@ function Shop(props) {
                         <div className="shop__list">      
 
                             <div className="shop__list-slider">
-                                {props.shopCards
-                                    .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))                                    
-                                    .map((item, index) => (
-                                    <ShopCard 
-                                        id={item.id}
-                                        key={index}
-                                        code={item.code}
-                                        img={item.img} 
-                                        title={item.title} 
-                                        price={item.price} 
-                                        onPlus={(obj) => addToCart(obj)}
-                                    /> 
-                                    ))
-                                }
+                                {renderItems()}
                             </div>
 
                             {/* <div className="slider__buttonS"> 
