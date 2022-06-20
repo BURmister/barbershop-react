@@ -6,7 +6,12 @@ function Header2(props) {
 
     const clickOnEnter = () => {
         props.clickOnLogIn();
-        props.overflowHiden();
+        props.overflowHidden();
+    }
+
+    const clickOnCart = () => {
+        props.clickOnCart()
+        props.overflowHidden()
     }
 
     return(
@@ -27,8 +32,8 @@ function Header2(props) {
                             </div>
                         </div>
                         <div className="nav__item">
-                            <div onClick={props.overflowHidden} className="enter-cart__wrapper nav__enter" >
-                                <li onClick={props.clickOnCart} className="svg-cart nav__enter-item"  >   
+                            <div className="enter-cart__wrapper nav__enter" >
+                                <li onClick={clickOnCart} className="svg-cart nav__enter-item"  >   
                                     <svg fill="none" height="27" viewBox="0 0 30 27" width="25" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1.39999 1.70001H6.60001" stroke="#ffffff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
                                         <path d="M6.60001 1.70001L11 18.9" stroke="#ffffff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>

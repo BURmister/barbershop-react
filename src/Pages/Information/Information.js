@@ -194,7 +194,7 @@ function Information(props) {
                                                 <div className="sign__form-item firth">
                                                     <p class="appointment__item"> 
                                                     <label for="appointment-phone">Телефон</label>
-                                                    <input onChange={onInputTel} value={telValue} id="appointment-phone" type="tel" name="phone" placeholder="+7 232 323-23-23" inputmode="tel"/>
+                                                    <input onChange={onInputTel} value={telValue} id="appointment-phone" type="tel" name="phone" placeholder="+7 XXX XXX-XX-XX" inputmode="tel"/>
                                                     {telValue && <img className="Information__clear" src={imgClear} onClick={() => setTelValue('')} /> }</p>
                                                 </div>
                                             </div>

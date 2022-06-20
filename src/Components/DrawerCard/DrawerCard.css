@@ -135,10 +135,6 @@
     border: 3px solid black;
 }
 
-.drawerCard__delete-item {
-    transform: rotate(45deg);
-}
-
 .drawerCard {
     animation-name: shopCards;
     animation-iteration-count: 1;

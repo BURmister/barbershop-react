@@ -23,14 +23,6 @@ function Cart(props) {
         props.clickOnClose();
     }
 
-    // let priceCount = 0
-
-    // const priceCounter = (price) => {
-    //     priceCount = priceCount + Number(price)
-    //     console.log(priceCount)
-    //     return ( priceCount )
-    // }
-
     const addNote = async (cartItems) => {
         try { 
             setLoading(true)
@@ -58,6 +50,17 @@ function Cart(props) {
         }
     }
 
+    const addToCart = (obj) => {
+        try {
+            const { data } = axios.post('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart', obj) 
+        } catch (error) {
+            alert('товар не получилось добавить')
+        }
+    } 
+
+    const [allPrice, setAllPrice] = React.useState(0)
+ 
+
     return(
         <div>   
         
@@ -77,34 +80,39 @@ function Cart(props) {
 
                         <div className="drawer__content">
                             <div className="content__wrapper">
-                                {loading 
+                                {props.cartItems.length 
+                                    ? <>{loading 
                                     &&  <svg class="spinner" viewBox="0 0 50 50">
                                             <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
                                         </svg>
-                                }
-                                {props.cartItems
+                                    }
+                                    {props.cartItems
                                     .map((item) => (
                                         <DrawerCard 
                                          id={item.id}
                                          code={item.code}
                                          title={item.title}
                                          price={item.price}
-                                        //  priceCounter={(price) => priceCounter(price)} 
-                                         onRemoveItem={onRemoveItem} />
-                                ))}
+                                         addToCart={(obj) => addToCart(obj)}
+                                         userItemAmount={item.userAmount}
+                                         onRemoveItem={onRemoveItem} 
+                                        />
+                                    ))}</>
+                                : <div className="cart__void"> корзина пустая :( </div> 
+                                }
                             </div>
                         </div>
 
                         <div className="drawer__container__footer">
                             <div className="drawer__footer">
                                 <div className="drawer__priceCount"><p>итого к оплате:</p> <p>
-                                     {/* {priceCount}  */}
+                                     {allPrice}    
                                      ₽</p></div>
                                 <button disabled={loading} onClick={() => addNote(props.cartItems)} className=" button drawer__button__buy">оформление заказа</button>
                             </div>
                         </div>
 
-                        {loading && <div className="drawer__loading"></div>}
+                        
 
                     </div>
 
@@ -112,7 +120,7 @@ function Cart(props) {
                 </div>
 
                 
-
+                {loading && <div className="drawer__loading"></div>}
 
             </div> 
             

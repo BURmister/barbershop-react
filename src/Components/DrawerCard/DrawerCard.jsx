@@ -7,9 +7,9 @@ import iconPlus from '../imgs/plus.svg'
 import iconMinus from '../imgs/minus.svg'
 
 
-function DrawerCard({id, title, img, price, amount, priceCounter, priceCount, onRemoveItem}) {
+function DrawerCard({id, code, title, img, price, amount, onRemoveItem, addToCart, userItemAmount}) {
 
-    const [userAmount, setUserAmount] = React.useState(1);
+    const [userAmount, setUserAmount] = React.useState(userItemAmount);
 
     let iconDelete = true
 
@@ -22,9 +22,11 @@ function DrawerCard({id, title, img, price, amount, priceCounter, priceCount, on
 
     let userPrice = Number(price)*userAmount
 
-    // priceCounter(price)
-   
-
+    const plusItem = (obj) => {
+        userAmount = userAmount + 1
+        addToCart({id, code, title, price, userAmount, img})
+    }
+    
 
     return(
         <div className="drawerCard">   
@@ -42,9 +44,9 @@ function DrawerCard({id, title, img, price, amount, priceCounter, priceCount, on
                     <li className="drawerCard__li drawerCard__props-price">{userPrice} ₽</li>
                 </div> 
                 <div className="drawerCard__item__count">
-                    <div className="drawerCard__akor"><button onClick={() => onRemoveItem(id)} className="button buttonInCart button__buy">{ iconDelete ? <img className="drawerCard__delete-item" src={iconDeleteItem} ></img> : <img src={iconMinus} ></img>}</button></div>
+                    <div className="drawerCard__akor">{ iconDelete ? <button onClick={() => onRemoveItem(id)} className="button buttonInCart button__buy"> <img className="drawerCard__delete-item" src={iconDeleteItem} ></img></button> : <button onClick={() => setUserAmount(userAmount - 1 )} className="button buttonInCart button__buy"><img src={iconMinus} ></img></button>}</div>
                     <div className="drawerCard__amount__wrapper"><li>{userAmount}</li></div>
-                    <div className="drawerCard__akor__wrapper"><button /*onClick={() => setUserAmount(userAmount + 1)}*/ className="button buttonInCart button__buy"><img src={iconPlus} ></img></button></div>
+                    <div className="drawerCard__akor__wrapper"><button onClick={() => plusItem()} className="button buttonInCart button__buy"><img src={iconPlus} ></img></button></div>
                 </div>
             </div>
 
