@@ -1,9 +1,11 @@
 import React from 'react';
-import './Cart.css'
 import axios from 'axios'
 
 import iconClear from '../imgs/clear.svg'
 import DrawerCard from '../DrawerCard/DrawerCard'
+import { useCart } from '../../Hooks/useCart'
+
+import styles from'./Cart.css'
 
 const delay = () => new Promise((resolve) => setTimeout(resolve, 1000))
 
@@ -15,6 +17,8 @@ function Cart(props) {
           props.setCartItems(res.data)
         })
     }, [])
+
+    const { totalPrice } = useCart()
 
     const [loading, setLoading] = React.useState(false)
 
@@ -58,11 +62,10 @@ function Cart(props) {
         }
     } 
 
-    const [allPrice, setAllPrice] = React.useState(0)
- 
+
 
     return(
-        <div>   
+        <div className={props.cart ? 'show' : 'hide'}>   
         
             <div className="drawer__wrapper">
 
@@ -70,7 +73,7 @@ function Cart(props) {
 
                 
 
-                <div className={`drawer ${props.stateOfCart ? 'show' : 'hide'} `}> 
+                <div className='drawer'> 
                     <div className="drawer__flex">
                         
                         <div className="drawer__header">
@@ -106,7 +109,7 @@ function Cart(props) {
                         <div className="drawer__container__footer">
                             <div className="drawer__footer">
                                 <div className="drawer__priceCount"><p>итого к оплате:</p> <p>
-                                     {allPrice}    
+                                    {totalPrice}
                                      ₽</p></div>
                                 <button disabled={loading} onClick={() => addNote(props.cartItems)} className=" button drawer__button__buy">оформление заказа</button>
                             </div>

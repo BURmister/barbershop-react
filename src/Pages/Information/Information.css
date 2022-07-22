@@ -175,6 +175,10 @@
     color: white;
 }
 
+.feature__p-wrapper>p {
+    font-size: 15px;
+}
+
 .gallery__item-img {
     display: flex;
     justify-content: center;

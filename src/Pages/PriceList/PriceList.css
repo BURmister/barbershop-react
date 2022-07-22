@@ -10,7 +10,7 @@ body {
 
 p, li {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 1.07em;
 }
 
 a {
@@ -230,6 +230,15 @@ td>li {
 
 .PriceList__info__h3 {
     font-size: 24px;
+}
+
+.PriceList__info__p {
+    color: rgba(23, 23, 23, 0.6)
+}
+
+.span__priceList {
+    color: rgba(0, 0, 0, 1);
+    font-size: 17px;
 }
 
 

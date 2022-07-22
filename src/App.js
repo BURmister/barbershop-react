@@ -60,7 +60,7 @@ function App() {
     <AppContext.Provider value={{isHeader, setIsHeader, cart, setCart, shopCards, cartItems, setCartItems, newsCards, loading, overflowHidden}}>
       <div> 
 
-        {cart ? <Cart normalOverflow={() => overflowHidden()} clickOnClose={() => setCart(false)} stateOfCart={cart} cartItems={cartItems} setCartItems={setCartItems}   /> : null}
+        {cart ? <Cart normalOverflow={() => overflowHidden()} clickOnClose={() => setCart(false)} stateOfCart={cart} cartItems={cartItems} setCartItems={setCartItems} cartOpened={cart}  /> : null}
 
 
         {login && <Login normalOverflow={() => overflowHidden()} clickOnClose={() => setLogin(false)}/>}

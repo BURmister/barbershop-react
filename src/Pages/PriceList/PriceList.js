@@ -67,10 +67,10 @@ function PriceList(props) {
                                     <div className="PriceList__info__h3"><h3>несколько слов о нас:</h3></div>
                                     <div className="PriceList__info__wrapper">
                                         <div className="PriceList__info__list-item">
-                                            <div className="PriceList__info__p"><p>наша парикмахерская занимается исключительно мужскими стрижками. стрижка каждого клиента для нас - это уникальная и продуманная до мелочей работа. мы не работаем на количество, мы делаем качество.</p></div>
+                                            <div className="PriceList__info__p"><p>наша <span className="span__priceList">парикмахерская</span> занимается исключительно <span className="span__priceList">мужскими</span> стрижками. стрижка каждого клиента для нас - это <span className="span__priceList">уникальная</span> и <span className="span__priceList">продуманная</span> до мелочей работа. мы  работаем не на количество, мы делаем <span className="span__priceList">качество</span>.</p></div>
                                         </div>
                                         <div className="PriceList__infO__list-item">
-                                            <div className="PriceList__info__p"><p>наша мастерская расоложена в центре города, поэтому сделать стильную стрижку можно в любое врем, даже в обеденный перерыв. здесь вы можете погрузиться в удобную для вас атмосферу, чувствовать себя комфортно и свободно!</p></div>
+                                            <div className="PriceList__info__p"><p>наша <span className="span__priceList">мастерская</span> расоложена в <span className="span__priceList">центре</span> города, поэтому сделать <span className="span__priceList">стильную</span> стрижку можно в <span className="span__priceList">любое</span> время, даже в обеденный перерыв. здесь вы можете погрузиться в <span className="span__priceList">удобную</span> для вас атмосферу, чувствовать себя <span className="span__priceList">комфортно</span> и <span className="span__priceList">свободно</span>!</p></div>
                                         </div>
                                     </div>
                                 </div>
