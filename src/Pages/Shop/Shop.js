@@ -142,7 +142,7 @@ function Shop(props) {
         )                                      
         .map((item, index) => (
         <ShopCard 
-            id={item.id}
+            id={index + 1}
             key={index}
             code={item.code}
             img={item.img} 

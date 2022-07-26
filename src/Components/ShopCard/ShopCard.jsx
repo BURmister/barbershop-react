@@ -10,13 +10,13 @@ function ShopCard({id, code, title, img, price, onPlus, loading}) {
 
     const onClickPlus = () => {
         setCardIcon(!cardIcon)
-        onPlus({id, code, title, img, price, userAmount: 1 })
+        onPlus({id, code, title, img, price, amount: 1 })
     }
 
     const loaded = loading
     return(
         <>
-            {loading ? (
+            {loaded ? (
                 <ContentLoader 
                 speed={2}
                 width={200}

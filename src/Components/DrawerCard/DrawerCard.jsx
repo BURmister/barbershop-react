@@ -6,12 +6,14 @@ import iconDeleteItem from '../imgs/deleteItem.svg'
 import iconPlus from '../imgs/plus.svg'
 import iconMinus from '../imgs/minus.svg'
 
+import { useCart } from '../../Hooks/useCart'
 
-function DrawerCard({id, code, title, img, price, amount, onRemoveItem, addToCart, userItemAmount}) {
 
-    const [userAmount, setUserAmount] = React.useState(userItemAmount);
+function DrawerCard({id, ssum, mminus, code, title, img, price, onRemoveItem, amount, addToCart}) {
 
-    let iconDelete = true
+    const [userAmount, setUserAmount] = React.useState(amount);
+    
+    let iconDelete = true 
 
     if(userAmount == 1) {
         iconDelete = true
@@ -22,11 +24,15 @@ function DrawerCard({id, code, title, img, price, amount, onRemoveItem, addToCar
 
     let userPrice = Number(price)*userAmount
 
-    const plusItem = (obj) => {
-        userAmount = userAmount + 1
-        addToCart({id, code, title, price, userAmount, img})
+    const plusItem = () => {
+        setUserAmount(userAmount + 1)
+        ssum(price)
     }
-    
+
+    const minusItem = () => {
+        setUserAmount(userAmount - 1)
+        mminus(price)
+    }
 
     return(
         <div className="drawerCard">   
@@ -44,9 +50,9 @@ function DrawerCard({id, code, title, img, price, amount, onRemoveItem, addToCar
                     <li className="drawerCard__li drawerCard__props-price">{userPrice} ₽</li>
                 </div> 
                 <div className="drawerCard__item__count">
-                    <div className="drawerCard__akor">{ iconDelete ? <button onClick={() => onRemoveItem(id)} className="button buttonInCart button__buy"> <img className="drawerCard__delete-item" src={iconDeleteItem} ></img></button> : <button onClick={() => setUserAmount(userAmount - 1 )} className="button buttonInCart button__buy"><img src={iconMinus} ></img></button>}</div>
+                    <div className="drawerCard__akor">{ iconDelete ? <button onClick={() => onRemoveItem(price, id)} className="button buttonInCart button__buy"> <img className="drawerCard__delete-item" src={iconDeleteItem} ></img></button> : <button onClick={() => minusItem()} className="button buttonInCart button__buy"><img src={iconMinus} ></img></button>}</div>
                     <div className="drawerCard__amount__wrapper"><li>{userAmount}</li></div>
-                    <div className="drawerCard__akor__wrapper"><button onClick={() => plusItem()} className="button buttonInCart button__buy"><img src={iconPlus} ></img></button></div>
+                    <div className="drawerCard__akor__wrapper"><button onClick={(obj) => plusItem({id, code, title, img, price, amount: userAmount + 1 })} className="button buttonInCart button__buy"><img src={iconPlus} ></img></button></div>
                 </div>
             </div>
 

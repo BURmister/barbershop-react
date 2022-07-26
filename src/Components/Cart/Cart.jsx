@@ -49,10 +49,11 @@ function Cart(props) {
         setLoading(false)
     }
 
-    const onRemoveItem = (id) => {
+    const onRemoveItem = (price, id) => {
         try {
-            axios.delete(`https://6241abd3042b562927a77458.mockapi.io/itemsOfCart/${id}`);
-            props.setCartItems((prev) => prev.filter(item => item.id !== id));
+            axios.delete(`https://6241abd3042b562927a77458.mockapi.io/itemsOfCart/${id}`)
+            props.setCartItems((prev) => prev.filter(item => item.id !== id))
+            mminus(price)
             console.log(id)
         } catch (error) {
             alert("не удалось обработать запрос")
@@ -67,9 +68,23 @@ function Cart(props) {
         }
     } 
 
+    let sum = 0
+    const ssum = (price) => {
+        sum = sum + price
+        console.log(sum)
+        setPriceT(priceT + sum)
+    }
 
+    const mminus = (price) => {
+        sum = sum - price
+        console.log(sum)
+        setPriceT(priceT - price)
+    }
 
-    return(
+    const [priceT, setPriceT] = React.useState(totalPrice)
+    let totalTotalPrice = totalPrice + sum
+
+    return (
         <div className={props.cart ? 'show' : 'hide'}>   
         
             <div className="drawer__wrapper">
@@ -101,9 +116,11 @@ function Cart(props) {
                                          code={item.code}
                                          title={item.title}
                                          price={item.price}
+                                         amount={item.amount}
                                          addToCart={(obj) => addToCart(obj)}
-                                         userItemAmount={item.userAmount}
                                          onRemoveItem={onRemoveItem} 
+                                         ssum={(price) => ssum(price)}
+                                         mminus={(price) => mminus(price)}
                                         />
                                     ))}</>
                                 : <div className="cart__void"> корзина пустая :( </div> 
@@ -112,9 +129,10 @@ function Cart(props) {
                         </div>
 
                         <div className="drawer__container__footer">
+                                
                             <div className="drawer__footer">
                                 <div className="drawer__priceCount"><p>итого к оплате:</p> <p>
-                                    {totalPrice}
+                                    {priceT}
                                      ₽</p></div>
                                 <button disabled={loading} onClick={() => addNote(props.cartItems)} className=" button drawer__button__buy">оформление заказа</button>
                             </div>
