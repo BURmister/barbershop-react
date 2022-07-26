@@ -30,8 +30,22 @@ function Shop(props) {
     // <a href="../барбершоп/shop-item.html"><img className="slider__img" src="../барбершоп/imgs/Layer 42.png" alt=""/></a>
 
 
-    const [searchValue, setSearchValue] = React.useState('');
-    const [filterValue, setFilterValue] = React.useState('');
+    const [searchValue, setSearchValue] = React.useState('')
+    const [filterBrands, setFilterBrands] = React.useState([
+        'baxter of california', 
+        'mr natty', 
+        'suavecito', 
+        'malin+goetz', 
+        "murray's",  
+        'american crew'
+    ])
+    const [filterBrandsCount, setFilterBrandsCount] = React.useState(0)
+    const [filterCategory, setFilterCategory] = React.useState([
+        'бритвенные принадлежности', 
+        'средства для ухода', 
+        'аксессуары'
+    ])
+    const [filterCategoryCount, setFilterCategoryCount] = React.useState(0)
     const [currentPage, setCurrentPage] = React.useState(1)
     const [itemsPerPage] = React.useState(9)
 
@@ -45,26 +59,6 @@ function Shop(props) {
 
     const onSearchInput = (event) => {
         setSearchValue(event.target.value);
-    }
-
-    const changeFilterValue = (data) => {
-        if (filterValue != data ) {
-            setFilterValue(data)
-            console.log("goods're filtered")
-        }
-        else {
-            setFilterValue('')
-            console.log("goods aren't filtered")
-        }
-        // renderShopCards.map( (item) => {
-        //     if (filterValue.toLowerCase().includes(item.title.toLowerCase())) {
-        //         return renderShopCards
-        //     }
-        //     else {
-        //         renderShopCards.pop(item)
-        //     }
-        //     console.log('done?')
-        // })
     }
 
     const addToCart = async (obj) => {
@@ -81,16 +75,69 @@ function Shop(props) {
         }
     } 
 
-    // props.setCartItems((prev) => prev.filter(item => item.title !== filterValue.item));
     let renderShopCards = shopCards.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-    .filter((item) => item.title.toLowerCase().includes(filterValue.toLowerCase()))
+    .filter((item) => filterBrands.includes(item.producer.toLowerCase()))
+    .filter((item) => filterCategory.includes(item.category.toLowerCase()))
+
+
+
+    const changeFilterBrands = (data) => {
+        if (filterBrandsCount == 0) {
+            setFilterBrands([])
+            setFilterBrands([data.toLowerCase()]) 
+            setFilterBrandsCount(1)
+        } else {
+            if (filterBrands.find((item) => item.toLowerCase() == data.toLowerCase() )) {
+                setFilterBrands((prev) => prev.filter(item => item.toLowerCase() !== data.toLowerCase()))
+                console.log('brands.length', filterBrands.length)
+                if (filterBrands.length - 1 == 0) {
+                    setFilterBrandsCount(0)
+                    setFilterBrands([
+                        'baxter of california', 
+                        'mr natty', 
+                        'suavecito', 
+                        'malin+goetz', 
+                        "murray's",  
+                        'american crew'
+                    ])
+                }
+            } else {
+                setFilterBrands((prev => [...prev, data.toLowerCase()])) 
+            }
+        }
+    }
+    
+    const changeFilterCategory = (data) => {
+        if (filterCategoryCount == 0) {
+            setFilterCategory([])
+            setFilterCategory([data.toLowerCase()]) 
+            setFilterCategoryCount(1)
+        } else {
+            if (filterCategory.find((item) => item.toLowerCase() == data.toLowerCase() )) {
+                setFilterCategory((prev) => prev.filter(item => item.toLowerCase() !== data.toLowerCase()))
+                console.log('category.length', filterCategory.length)
+                if (filterCategory.length - 1 == 0) {
+                    setFilterCategoryCount(0)
+                    setFilterCategory([
+                        'бритвенные принадлежности', 
+                        'средства для ухода', 
+                        'аксессуары'
+                    ])
+                }
+            } else {
+                setFilterCategory((prev => [...prev, data.toLowerCase()])) 
+            }
+        }
+    }
+
+    
 
     const renderItems = () => {
         return (
             loading 
             ?   loadingCards 
             :   renderShopCards
-                // WARNING!!! in this string u re slice all ShopCards only to 9 on 1 page
+                // WARNING!!! in this string u re slice all ShopCards only to 9 cards on 1 page
                 .slice(firstItemIndex, lastItemIndex) 
         )                                      
         .map((item, index) => (
@@ -109,7 +156,7 @@ function Shop(props) {
  
 
     return(
-        <div classNameName="Contacts__main"> 
+        <div classNameName="Contacts__main">    
 
             <div className="News__logo__wrapper">
                 <svg className="News__logo__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 369.44 153">
@@ -146,32 +193,32 @@ function Shop(props) {
                                 <form className="firmS__form" action="#">
                                     <div className="firmS__wrapper">
                                         <label className="login__checkbox label__s">
-                                            <input onClick={ () => changeFilterValue('Baxter of California')} id="checkbox" type="checkbox" value='Baxter of California' className="visually__hidden"/>
+                                            <input onClick={ () => changeFilterBrands('Baxter of California')} id="checkbox" type="checkbox" value='Baxter of California' className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Baxter of California
                                         </label>
                                         <label className="login__checkbox label__s">
-                                            <input onClick={ () => changeFilterValue('Mr Natty')} id="checkbox" type="checkbox"value="Mr Natty" className="visually__hidden"/>
+                                            <input onClick={ () => changeFilterBrands('Mr Natty')} id="checkbox" type="checkbox"value="Mr Natty" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Mr Natty
                                         </label>
                                         <label className="login__checkbox label__s">
-                                            <input onClick={ () => changeFilterValue('Suavecito')} id="checkbox" type="checkbox" value="Suavecito" className="visually__hidden"/>
+                                            <input onClick={ () => changeFilterBrands('Suavecito')} id="checkbox" type="checkbox" value="Suavecito" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Suavecito
                                         </label>
                                         <label className="login__checkbox label__s">
-                                            <input onClick={ () => changeFilterValue('Malin+Goetz')} id="checkbox" type="checkbox" value="Malin+Goetz" className="visually__hidden"/>
+                                            <input onClick={ () => changeFilterBrands('Malin+Goetz')} id="checkbox" type="checkbox" value="Malin+Goetz" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Malin+Goetz
                                         </label>
                                         <label className="login__checkbox label__s">
-                                            <input onClick={ () => changeFilterValue("Murray's")} id="checkbox" type="checkbox" value="Murray's" className="visually__hidden"/>
+                                            <input onClick={ () => changeFilterBrands("Murray's")} id="checkbox" type="checkbox" value="Murray's" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Murray's     
                                         </label>
                                         <label className="login__checkbox label__s">
-                                            <input onClick={ () => changeFilterValue('American Crew')} id="checkbox" type="checkbox" value="American Crew" className="visually__hidden"/>
+                                            <input onClick={ () => changeFilterBrands('American Crew')} id="checkbox" type="checkbox" value="American Crew" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             American Crew
                                         </label>
@@ -183,24 +230,23 @@ function Shop(props) {
                                 <form className="goods__form" action="">
                                     <div className="goods__wrapper">
                                         <label className="login__checkbox">
-                                            <input type="checkbox" className="visually__hidden"/>
+                                            <input onClick={ () => changeFilterCategory('Бритвенные принадлежности')} type="checkbox" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Бритвенные принадлежности
                                         </label>
                                         <label className="login__checkbox">
-                                            <input type="checkbox" className="visually__hidden"/>
+                                            <input onClick={ () => changeFilterCategory('Средства для ухода')} type="checkbox" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Средства для ухода
                                         </label>
                                         <label className="login__checkbox">
-                                            <input type="checkbox" className="visually__hidden"/>
+                                            <input onClick={ () => changeFilterCategory('Аксессуары')} type="checkbox" className="visually__hidden"/>
                                             <span className="checkbox__indicator"></span>
                                             Аксессуары
                                         </label>
                                     </div>
                                 </form>
                             </div>
-                            <button className="button button__form z-index-1" type="button">показать</button>
                         </div>
 
                         <div className="shop__list">      

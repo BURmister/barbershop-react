@@ -29,6 +29,7 @@ function Cart(props) {
 
     const addNote = async (cartItems) => {
         try { 
+            if (props.cartItems.length > 0) {
             setLoading(true)
             await axios.post('https://6241abd3042b562927a77458.mockapi.io/notes', {category: "order", cartItems})
             for (let i = 0; i < cartItems.length; i++) {
@@ -37,7 +38,11 @@ function Cart(props) {
                 await delay()
             }
             props.setCartItems([])
-            alert('ваш заказ оформлен')           
+            alert('ваш заказ оформлен')   
+            }
+            else {
+                alert('корзина пуста, мы воздух не продаем')
+            }        
         } catch (error) {
             alert("не удалось обработать запрос")
         }
