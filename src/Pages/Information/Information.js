@@ -22,7 +22,8 @@ function Information(props) {
     //проверка на хедер
     React.useEffect(() => {
         props.isHeader()
-        }, [] )
+       window.scrollTo(0, 0)
+    }, [] )
 
     //контролируемые инпуты
     //input date
@@ -30,7 +31,7 @@ function Information(props) {
     const onInputDate = (event) => {
         setDateValue(event.target.value)
     }
-
+   
     //input time
     const [timeValue, setTimeValue]= React.useState();
     const onInputTime = (event) => {

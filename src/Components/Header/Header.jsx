@@ -24,11 +24,11 @@ function Header(props) {
                     <div className="nav">
                         <div className="nav__item">
                             <div className="nav__list">
-                                <Link to="/"><li class="nav__list-item"><a className="akor nav__a">ИНФОРМАЦИЯ</a></li></Link>
-                                <Link to="/News"><li class="nav__list-item"><a className="akor nav__a">НОВОСТИ</a></li></Link>
-                                <Link to="/Price-List"><li class="nav__list-item"><a className="akor nav__a">ПРАЙС-ЛИСТ</a></li></Link>
-                                <Link to="/Shop"><li class="nav__list-item"><a className="akor nav__a">МАГАЗИН</a></li></Link>
-                                <Link to="/Contacts"><li class="nav__list-item"><a className="akor nav__a">КОНТАКТЫ</a></li></Link>
+                                <Link to="/"><li className="nav__list-item "><a className="akor nav__a">ИНФОРМАЦИЯ</a></li></Link>
+                                <Link to="/News"><li className="nav__list-item "><a className="akor nav__a">НОВОСТИ</a></li></Link>
+                                <Link to="/Price-List"><li className="nav__list-item "><a className="akor nav__a">ПРАЙС-ЛИСТ</a></li></Link>
+                                <Link to="/Shop"><li className="nav__list-item "><a className="akor nav__a">МАГАЗИН</a></li></Link>
+                                <Link to="/Contacts"><li className="nav__list-item "><a className="akor nav__a">КОНТАКТЫ</a></li></Link>
                             </div>
                         </div>
                         <div className="nav__item">

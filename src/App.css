@@ -76,3 +76,31 @@ h1, h2, h3, p, li {
   cursor: default;
 }
 
+.not-found__wrapper {
+  padding-top: 23%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4em;
+  
+  color: black;
+}
+
+.not-found {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.5em;
+}
+
+.not-found > span {
+  font-size: 3.5em;
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+

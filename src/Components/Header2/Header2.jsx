@@ -4,6 +4,8 @@ import './Header2.css'
 
 function Header2(props) {
 
+    const [activePage, setActivePage] = React.useState()
+
     const clickOnEnter = () => {
         props.clickOnLogIn();
         props.overflowHidden();
@@ -15,7 +17,7 @@ function Header2(props) {
     }
 
     return(
-        <div className="header">
+        <div onClick={props.closeSort} className="header">
             <div className="Header2__container">
                 <div className="header__wrapper">
                     <div className="nav">

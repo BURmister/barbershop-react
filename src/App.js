@@ -26,7 +26,7 @@ function App() {
 
   React.useEffect(() => {
     async function fetchData() {
-      setLoading(true)
+      await setLoading(true)
       await axios.get('https://6241abd3042b562927a77458.mockapi.io/goods').then((res) => {
         setShopCards(res.data)
       })
@@ -47,7 +47,11 @@ function App() {
 
   const [shopCards, setShopCards] = React.useState([])
   const [cartItems, setCartItems] = React.useState([])
-  const [newsCards, setNewsCards] = React.useState([])  
+  const [newsCards, setNewsCards] = React.useState([]) 
+
+  const [activePage, setActivePage] = React.useState(0)
+
+  const [sortOpen, setSortOpen] = React.useState(false) 
 
   const [loading, setLoading] = React.useState(true)
 
@@ -57,7 +61,10 @@ function App() {
 
 
   return (
-    <AppContext.Provider value={{isHeader, setIsHeader, cart, setCart, shopCards, cartItems, setCartItems, newsCards, loading, overflowHidden}}>
+    <AppContext.Provider value={
+      {
+        isHeader, setIsHeader, cart, setCart, shopCards, cartItems, setCartItems, newsCards, loading, overflowHidden, sortOpen, setSortOpen
+      }}>
       <div> 
 
         {cart ? <Cart normalOverflow={() => overflowHidden()} clickOnClose={() => setCart(false)} stateOfCart={cart} cartItems={cartItems} setCartItems={setCartItems} cartOpened={cart}  /> : null}
@@ -69,7 +76,7 @@ function App() {
 
         {isHeader ? 
           <Header overflowHidden={() => overflowHidden()} clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)} /> : 
-          <Header2 overflowHidden={() => overflowHidden()} clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)}/>
+          <Header2 overflowHidden={() => overflowHidden()} closeSort={() => setSortOpen(false)} clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)}/>
         }
         
 
@@ -82,8 +89,9 @@ function App() {
             <Route path="/News" element={<News newsCards={newsCards} isHeader={() => setIsHeader(false)}/>} />
             <Route path="/Shop" element={<Shop isHeader={() => setIsHeader(false)}/>} />
             <Route path="/Contacts" element={<Contacts isHeader={() => setIsHeader(false)}/>} />
+            <Route path="*" element={<div className="not-found__wrapper"><h1 className="not-found"><span> 🤷‍♂️not found</span></h1><p className="not-found">такой страницы не существует в нашем приложении</p></div>}/>
 
-          </Routes>
+          </Routes>       
           
         </div> 
 

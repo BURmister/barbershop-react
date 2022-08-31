@@ -22,9 +22,9 @@ function Cart(props) {
 
     const [loading, setLoading] = React.useState(false)
 
-    const onClickClose = () => {
-        props.normalOverflow();
-        props.clickOnClose();
+    const onClickClose = async () => {
+        props.normalOverflow()
+        props.clickOnClose()
     }
 
     const addNote = async (cartItems) => {
@@ -33,7 +33,7 @@ function Cart(props) {
             setLoading(true)
             await axios.post('https://6241abd3042b562927a77458.mockapi.io/notes', {category: "order", cartItems})
             for (let i = 0; i < cartItems.length; i++) {
-                const item = cartItems[i];
+                const item = cartItems[i]
                 await axios.delete('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart/' + item.id)
                 await delay()
             }

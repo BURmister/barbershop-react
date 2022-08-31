@@ -6,6 +6,7 @@ function Contacts(props) {
 
     React.useEffect(() => {
         props.isHeader()
+        window.scrollTo(0, 0)
     }, [])
 
     return(
