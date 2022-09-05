@@ -20,6 +20,7 @@ import PriceList from './Pages/PriceList/PriceList';
 import News from './Pages/News/News';
 import Shop from './Pages/Shop/Shop';
 import Contacts from './Pages/Contacts/Contacts';
+import NotFound from './Pages/NotFound/NotFound';
 
 
 function App() {
@@ -63,7 +64,7 @@ function App() {
   return (
     <AppContext.Provider value={
       {
-        isHeader, setIsHeader, cart, setCart, shopCards, cartItems, setCartItems, newsCards, loading, overflowHidden, sortOpen, setSortOpen
+        activePage, setActivePage, isHeader, setIsHeader, cart, setCart, shopCards, cartItems, setCartItems, newsCards, loading, overflowHidden, sortOpen, setSortOpen
       }}>
       <div> 
 
@@ -75,8 +76,8 @@ function App() {
 
 
         {isHeader ? 
-          <Header overflowHidden={() => overflowHidden()} clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)} /> : 
-          <Header2 overflowHidden={() => overflowHidden()} closeSort={() => setSortOpen(false)} clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)}/>
+          <Header overflowHidden={() => overflowHidden()} clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)} activePage={activePage} /> : 
+          <Header2 overflowHidden={() => overflowHidden()} closeSort={() => setSortOpen(false)} clickOnCart={() => setCart(true)} clickOnLogIn={() => setLogin(true)} activePage={activePage}/>
         }
         
 
@@ -89,7 +90,7 @@ function App() {
             <Route path="/News" element={<News newsCards={newsCards} isHeader={() => setIsHeader(false)}/>} />
             <Route path="/Shop" element={<Shop isHeader={() => setIsHeader(false)}/>} />
             <Route path="/Contacts" element={<Contacts isHeader={() => setIsHeader(false)}/>} />
-            <Route path="*" element={<div className="not-found__wrapper"><h1 className="not-found"><span> 🤷‍♂️not found</span></h1><p className="not-found">такой страницы не существует в нашем приложении</p></div>}/>
+            <Route path="*" element={<NotFound isHeader={() => setIsHeader(false)}/>}/>
 
           </Routes>       
           

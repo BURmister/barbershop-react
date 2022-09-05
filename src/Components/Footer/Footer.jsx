@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Footer.css'
+import { Link } from 'react-router-dom'
 
 export default class Footer extends Component {
     render() {
@@ -10,7 +11,7 @@ export default class Footer extends Component {
                         <div className="footer__list">
                             <p className="footer_contacts"> Барбершоп Бородинский</p>
                             <p>Адрес: г. Санкт-Петербург, Б. Конюшенная, д. 19/8 </p>
-                            <div className="footer__list-itemS"><a className="footer__list-item akor" href="mao.html"> как нас найти?</a></div>
+                            <Link to="/Contacts"><div className="footer__list-itemS"><a className="footer__list-item akor" href="mao.html"> как нас найти?</a></div></Link>
                             <p>Телефон: 000-00-00-00</p>
                         </div>
                         <div className="footer__social">

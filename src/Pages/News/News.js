@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import AppContext from '../../Components/Context/Context'
 
 
 import './News.css'
@@ -8,7 +9,10 @@ import NewsCard from '../../Components/NewsCard/NewsCard'
 
 function News(props) {
 
+    const {setActivePage} = React.useContext(AppContext)
+
     React.useEffect(() => {
+        setActivePage(1)
         props.isHeader()
         window.scrollTo(0, 0)
     }, [])

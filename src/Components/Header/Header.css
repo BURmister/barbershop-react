@@ -80,6 +80,10 @@
     transition: 0.2s linear;
 }
 
+.list-item__active.nav__list-item::after {
+    background-color: rgba(255, 255, 255, 1);
+
+}
 
 .nav__list-item:hover.nav__list-item::after {
     background-color: rgba(255, 255, 255, 1);

@@ -1,13 +1,18 @@
 import React from "react";
 import './PriceList.css'
 import { Link } from 'react-router-dom'
+import AppContext from '../../Components/Context/Context'
+
 
 import imgLogo from './imgs/index-logo.svg';
 
 
 function PriceList(props) {
 
+    const {setActivePage} = React.useContext(AppContext)
+
     React.useEffect(() => {
+        setActivePage(2)
         props.isHeader()
         window.scrollTo(0, 0)
     }, [])

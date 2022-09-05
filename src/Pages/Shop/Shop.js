@@ -38,17 +38,19 @@ function Shop(props) {
 
 
     //UseContext
-    const { sortOpen, setSortOpen, cartItems, setCartItems, shopCards, loading } = React.useContext(AppContext)
+    const {setActivePage, sortOpen, setSortOpen, cartItems, setCartItems, shopCards, loading } = React.useContext(AppContext)
 
+    const [reloadSidebar, setReloadSidebar] = React.useState(false) 
 
     //UseEffect
     React.useEffect(() => {
+        setActivePage(3)
         props.isHeader(); 
         axios.get('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart').then((res) => {
         setCartItems(res.data)
         })
         window.scrollTo(0, 0)
-    }, [])
+    }, [reloadSidebar])
 
 
     // ReactStates
@@ -60,6 +62,7 @@ function Shop(props) {
     const [currentPage, setCurrentPage] = React.useState(1)
     const [itemsPerPage] = React.useState(9)
     const [selectedSort, setSelectedSort] = React.useState({index: 0, name: 'популярности', property: 'rating', type: 'desc'})
+
     
 
     // Constants
@@ -242,9 +245,10 @@ function Shop(props) {
                             receivedCategorys={receivedCategorys}
                             changeFilterCategory={(item) => changeFilterCategory(item)}
                             resetFilter={() => resetFilter()}
+                            setReloadSidebar={() => setReloadSidebar(true)}
                         />
 
-\                       <div className="shop__list">  
+                       <div className="shop__list">  
     
                             <div className="shop__list-slider">
                                 {renderItems()}

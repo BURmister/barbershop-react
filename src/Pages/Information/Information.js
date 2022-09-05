@@ -6,6 +6,7 @@ import axios from 'axios'
 import './Information.css'
 import NewsCard from '../../Components/NewsCard/NewsCard'
 import Carousel from '../../Components/Carousel/Carousel'
+import AppContext from '../../Components/Context/Context'
 
 
 import imgShape from './imgs/Shape 1.svg'
@@ -18,9 +19,13 @@ import imgCarousel__4 from './imgs/gwen-filter.jpg'
 import imgCarousel__5 from './imgs/nervyOnRoof.jpg'
 
 function Information(props) {
+    
+    const {setActivePage} = React.useContext(AppContext)
+
 
     //проверка на хедер
     React.useEffect(() => {
+        setActivePage(0)
         props.isHeader()
        window.scrollTo(0, 0)
     }, [] )
@@ -76,17 +81,17 @@ function Information(props) {
                     <div className="features__list-item">
                         <div className="feature__h3-wrapper"><h3>быстро</h3></div>
                         <div className="feature__img-wrapper"><img src={imgShape} alt="" /></div>
-                        <div className="feature__p-wrapper"><p> Мы делаем свою работу быстро! <br/>2 часа пролетят не заметно и вы - счастливый обладатель стильной стрижки-минутки </p></div>
+                        <div className="feature__p-wrapper"><p> Мы делаем свою работу <span>быстро</span>! <br/>2 часа пролетят не заметно и вы - счастливый <span>обладатель</span> <span>стильной</span> стрижки-минутки </p></div>
                     </div>
                     <div className="features__list-item">
                         <div className="feature__h3-wrapper"><h3> круто </h3></div>
                         <div className="feature__img-wrapper"><img src={imgShape} alt="" /></div>
-                        <div className="feature__p-wrapper"><p> Забудьте, как вы стригличь раньше. Мы сделаем из вас звезду кино!<br/> Во всяком случае внешне </p></div>
+                        <div className="feature__p-wrapper"><p> Забудьте, как <span>вы</span> стриглись раньше. <span>Мы</span> сделаем из вас <span>звезду кино!</span><br/> Во всяком случае внешне </p></div>
                     </div>
                     <div className="features__list-item">
                         <div className="feature__h3-wrapper"><h3> дорого </h3></div>
                         <div class="feature__img-wrapper"><img src={imgShape} alt="" /></div>
-                        <div className="feature__p-wrapper"><p> Наши мастера - профессионалы своего дела и не могут стоить дешево. К тому же, разве цена не дает определенный статус </p></div>
+                        <div className="feature__p-wrapper"><p> Наши <span>мастера</span> - <span>профессионалы</span> своего <span>дела</span> и не могут стоить дешево. К тому же, разве цена не дает <span>определенный статус</span></p></div>
                     </div>
                 </div>
             </div>
@@ -144,13 +149,13 @@ function Information(props) {
                                 <div className="contacts__item-h3"><h3> контактная информация </h3></div>
                                 <div className="contacts__info">
                                     <div className="contacts__item-p">
-                                        <p> Барбершоп Бородинский <br/>
-                                            Адрес: г. Санкт-Петербург, <br/>Б. Конюшенная, д. 19/8 <br/>
-                                            Телефон: 000-00-00-00
+                                        <p> <span>Барбершоп Бородинский</span><br/>
+                                            <span>Адрес:</span> г. Санкт-Петербург, <br/>Б. Конюшенная, д. 19/8 <br/>
+                                            <span>Телефон:</span> 000-00-00-00
                                         </p>
                                     </div>
                                     <div className="contacts__item-time">
-                                        <p> Время работы:<br/>
+                                        <p> <span>Время работы:</span><br/>
                                             пн-пт: с 10:00 дo 22:00 <br/>
                                             сб-вс: с 10:00 до 19:00
                                         </p>
@@ -165,9 +170,9 @@ function Information(props) {
                                     <div className="appointment_form">
                                         <div className="sign__item-h3"><h3> записаться </h3></div>
 
-                                        <div>
+                                        <div className="appointment__flex">
                                             <div className="sign__item-p">
-                                                <p className="appointment_info"> укажите желаемую дату и время и мы свяжемся с вами для подтверждения брони</p>
+                                                <p className="appointment_info"> укажите <span>желаемую дату</span> и <span>время</span> и мы <span>свяжемся</span> с вами для <span>подтверждения</span> брони</p>
                                             </div>
                                             <div className="sign__form-wrapper">
 

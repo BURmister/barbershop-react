@@ -125,11 +125,18 @@ h1 {
     color: white;
     font-size: 1.5em;
     letter-spacing: 4px;
+
+    transition: all 0.5s ease;
 }
 
 .reset-filter:hover {
     font-size: 1.7em;
     letter-spacing: 10px;
+}
+
+.reset-filter:hover svg {
+    transition: transform 0.7s ease;
+    transform: rotate(-360deg);
 }
 
 .p-relative {

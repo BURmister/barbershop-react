@@ -35,6 +35,15 @@
     background-color: transparent;
     border: 2px solid #000000;
 }
+
+.appointment_info {
+    color: rgba(23, 23, 23, 0.7);;
+}
+
+.appointment_info>span {
+    color: black;
+    font-size: 16px;
+}
   
 .container {
     max-width: 940px;
@@ -177,6 +186,12 @@
 
 .feature__p-wrapper>p {
     font-size: 15px;
+    color: rgb(202, 202, 202)
+}
+
+.feature__p-wrapper>p>span {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1)
 }
 
 .gallery__item-img {
@@ -236,6 +251,23 @@
     flex-direction: column;
     justify-content: space-around;
 }
+
+.contacts__item-p {
+    padding-bottom: 11%;
+    color: rgba(23, 23, 23, 0.7);
+}
+
+.contacts__item-p>p>span {
+    color: rgba(23, 23, 23, 1);
+}
+
+.contacts__item-time {
+    color: rgba(23, 23, 23, 0.7);
+}
+
+.contacts__item-time>p>span {
+    color: rgba(23, 23, 23, 1);
+}
   
 .contacts__buttonS a{
     color: rgb(247, 247, 247);;
@@ -277,7 +309,11 @@
     display: flex;
     flex-direction: column;
 }
-  
+
+.sign__item-p {
+    padding-bottom: 5%;
+}
+
 .sign__button {
     display: grid;
     grid-column: 1fr;

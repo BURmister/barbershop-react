@@ -15,6 +15,14 @@ function Header(props) {
         props.overflowHidden()
     }
 
+    const headerList = [
+        {name: 'ИНФОРМАЦИЯ', url: "/", index: 0},
+        {name: 'НОВОСТИ', url: "/News", index: 1},
+        {name: 'ПРАЙС-ЛИСТ', url: "/Price-List", index: 2},
+        {name: 'МАГАЗИН', url: "/Shop", index: 3},
+        {name: 'КОНТАКТЫ', url: "/Contacts", index: 4}
+    ]
+
     return (
         <div>
 
@@ -24,11 +32,9 @@ function Header(props) {
                     <div className="nav">
                         <div className="nav__item">
                             <div className="nav__list">
-                                <Link to="/"><li className="nav__list-item "><a className="akor nav__a">ИНФОРМАЦИЯ</a></li></Link>
-                                <Link to="/News"><li className="nav__list-item "><a className="akor nav__a">НОВОСТИ</a></li></Link>
-                                <Link to="/Price-List"><li className="nav__list-item "><a className="akor nav__a">ПРАЙС-ЛИСТ</a></li></Link>
-                                <Link to="/Shop"><li className="nav__list-item "><a className="akor nav__a">МАГАЗИН</a></li></Link>
-                                <Link to="/Contacts"><li className="nav__list-item "><a className="akor nav__a">КОНТАКТЫ</a></li></Link>
+                                {headerList.map((item) => (
+                                    <Link to={`${item.url}`}><li className={`nav__list-item ${props.activePage == item.index ? ' list-item__active' : ''}`}><a className={props.activePage == item.index ? ' list-item__active' : ''}>{item.name}</a></li></Link>
+                                ))}
                             </div>
                         </div>
                         <div className="nav__item">

@@ -1,10 +1,16 @@
 import React from 'react';
 import './Contacts.css'
 import { Link } from 'react-router-dom'
+import AppContext from '../../Components/Context/Context'
+
 
 function Contacts(props) {
 
+    const {setActivePage} = React.useContext(AppContext)
+
+
     React.useEffect(() => {
+        setActivePage(4)
         props.isHeader()
         window.scrollTo(0, 0)
     }, [])
