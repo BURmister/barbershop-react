@@ -1,0 +1,40 @@
+.main-container {
+    height: 300px;
+    width: 450px;
+    
+    position: relative;
+}
+
+.window {
+    height: 95%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #2b2b2b;
+    margin-bottom: 10px;
+}
+
+.main-container::after {
+    content: '';
+    position: absolute;
+    top: 80%;
+    right: 39%;
+    background-image: url('../imgs/mini-logo.svg');
+    background-repeat: no-repeat;
+    width: 111px;
+    height: 40px;
+    z-index: 100;
+}
+
+.all-pages-container {
+    height: 100%;
+    display: flex;
+
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+
+.mini-logo-gallery {
+    z-index: 100;
+}
