@@ -1,18 +1,13 @@
 import React from 'react';
 
-function Search() {
+function Search(props) {
 
-    const [searchValue, setSearchValue] = React.useState();
-
-    const onSearchInput = (event) => {
-        setSearchValue(event.target.value);
-    }
     return(
-        <div>
-            { searchValue && <img onCLick={() => setSearchValue('') }  alt="X" /> }
+        <>
+            { props.searchValue && <img className="clear" onCLick={() => props.setSearchValue('') }  alt="X" /> }
             <img  alt=""  />
-            <input onChange={onSearchInput} value={searchValue} placeholder="Search" />
-        </div>
+            <input className="search__input" onChange={props.onSearchInput()} value={props.searchValue} placeholder="Search" />
+        </>
     )
 }
 

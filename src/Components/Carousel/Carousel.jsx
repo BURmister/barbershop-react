@@ -2,17 +2,28 @@ import { Children, cloneElement } from 'react'
 import React from 'react'
 import './Carousel.css'
 
+// type CarouselProps = {
+//     children: HTMLDivElement[]
+// }
 
-function Carousel({children}) {
+const Carousel
+// : React.FC<CarouselProps>
+ = ({children}) => {
 
     const pageWidth = 450
     
-    const [pages, setPages] = React.useState([])
-    const [offset, setOffset] = React.useState(0)
+    const [pages, setPages] = React.useState
+    // <any>
+        ([])
+    const [offset, setOffset] = React.useState
+    // <number>
+        (0)
 
     React.useEffect(() => {
         setPages(
-            Children.map(children, child => {
+            Children.map(children, (child
+                // : any
+                ) => {
                 return cloneElement(child, {
                     style: {
                         height: '100%', 
@@ -26,7 +37,9 @@ function Carousel({children}) {
 
     const handleLeftClick = () => {
         setOffset((currentOffset) => {
-            const newOffset = currentOffset + pageWidth
+            const newOffset
+            // : number
+             = currentOffset + pageWidth
 
             return Math.min(newOffset, 0)
         })
@@ -34,9 +47,13 @@ function Carousel({children}) {
 
     const handleRightClick = () => {
         setOffset((currentOffset) => {
-            const newOffset = currentOffset - pageWidth
+            const newOffset
+            // : number
+             = currentOffset - pageWidth
 
-            const maxOffset = -(pageWidth * (pages.length - 1))
+            const maxOffset
+            // : number
+             = -(pageWidth * (pages.length - 1))
 
             return Math.max(newOffset, maxOffset)
         })

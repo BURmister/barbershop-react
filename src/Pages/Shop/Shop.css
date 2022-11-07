@@ -222,6 +222,55 @@ h1 {
     font-weight: bold;
 }
 
+.filter__checkbox {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+.filter__checkbox input[type="checkbox"] + span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 17px;
+    height: 18px;
+    border: 2px solid #000000;
+}
+
+.current__checkbox::after {
+    content: '';
+    position: absolute;
+    top: 45%;
+    left: -1px;
+    width: 15px;
+    height: 2px;
+    background-color: #000000;
+    transform: rotate(-45deg);
+}
+
+.current__checkbox::before {
+    content: '';
+    position: absolute;
+    top: 45%;
+    left: -1px;
+    width: 15px;
+    height: 2px;
+    background-color: #000000;
+    transform: rotate(45deg);
+}
+
+.button__paginate {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    font: inherit;
+    text-align: center;
+    color: #ffffff;
+    vertical-align: middle;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
 .goods__wrapper {
     display: flex;
     flex-direction: column;
