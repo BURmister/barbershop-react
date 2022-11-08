@@ -92,6 +92,33 @@
     border: 3px solid black;
 }
 
+.product__price > span {
+    width: 35px;
+    height: 35px;
+    border-radius: 17.5px;
+}
+
+.product__price > span {
+    position: absolute;
+    content: '';
+
+    left: 95%;
+    top: -20px;
+
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #d8d5d5;
+
+    font-weight: bold;
+    font-size: 17px;
+}
+
 
 
 @keyframes slide {

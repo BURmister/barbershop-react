@@ -1,10 +1,22 @@
 import axios from 'axios'
 import React from 'react' 
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { changeActivePage } from '../../redux/slice/activePageSlice'
 
 import './ProductPage.css'
+import { addItem } from '../../redux/slice/cartSlice'
+
+type shopCardObject = {
+    id: string, 
+    code: string, 
+    title: string,
+    img: string,
+    price: number,
+    producer: string,
+    rating: number,
+    count?: number
+}
 
 const ProductPage: React.FC = () => {
 
@@ -12,10 +24,15 @@ const ProductPage: React.FC = () => {
     const { id } = useParams()
     const navigate = useNavigate()
     const [product, setProduct] = React.useState<{
+        id: string, 
+        code: string, 
         title: string,
-        amount: number,
+        img: string,
         price: number,
-        img: string
+        producer: string,
+        rating: number,
+        amount: number,
+        count?: number
     }>()
 
     React.useEffect(() => {
@@ -30,8 +47,34 @@ const ProductPage: React.FC = () => {
                 navigate("/Shop")
             }
         }
+        
         fetchProduct()
+        
     }, [])
+
+
+    const cartItem = useSelector((state: any) => state.cart.cartItems.find((obj: shopCardObject) => Number(obj.code) === Number(id)))
+    const addedCount: number = cartItem ? cartItem.count : 0
+    
+
+    const addToCart = async (obj: {
+        id: string, 
+        code: string, 
+        title: string,
+        img: string,
+        price: number,
+        producer: string,
+        rating: number,
+        count?: number
+    }) => {
+        try {
+            const { data } = await axios.post('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart', obj)
+            dispatch(addItem(data))
+        } catch (error) {
+            alert('товар не получилось добавить')
+        }
+    } 
+
 
     if (!product) {
         return <h1>загрузка...</h1>
@@ -61,7 +104,7 @@ const ProductPage: React.FC = () => {
                     <div className="shop__item">
 
                         <div className="product__gallery">
-                            <img className="product__img"  src={product.img}></img>
+                            <img className="product__img" src={product.img}></img>
                         </div>
 
 
@@ -81,7 +124,11 @@ const ProductPage: React.FC = () => {
                                 </div>
                                 <div className="product__price">
                                     <li>{product.price} ₽</li>
-                                    <button className=" button product__button__buy">купить</button>
+                                    <button onClick={() => addToCart(product)} className=" button product__button__buy">
+                                        купить
+                                        
+                                    </button>
+                                    { addedCount > 0 && <span>{addedCount}</span>}
                                 </div>
                                 <div className="set__h3"><h3>В набор входят:</h3></div>
                                 <div className="set__list">

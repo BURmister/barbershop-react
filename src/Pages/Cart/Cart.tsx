@@ -17,7 +17,7 @@ import { addItem, removeItem, clearItems, fetchCart } from '../../redux/slice/ca
 import './Cart.css'
 
 
-const delay = () => new Promise((resolve) => setTimeout(resolve, 100))
+const delay = () => new Promise((resolve) => setTimeout(resolve, 500))
 
 
 type CartProps = {
@@ -45,19 +45,14 @@ const Cart: React.FC<CartProps> = ({isHeader, overflowHidden}) => {
             if (cart.cartItems.length > 0) {
                 setLoading(true)
                 await axios.post('https://6241abd3042b562927a77458.mockapi.io/notes', {category: "order", cartItems})
-                cart.cartItems.map(async (item: {
-                    id: string,
-                    img: string,
-                    code: string,
-                    title: string,
-                    price: number,
-                    count: number,
-                    producer: string,
-                    rating: number
-                }) => {
-                    await axios.delete('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart/' + item.id)
-                    await delay()
-                })
+                for (let index = 0; index < cart.cartItems.length; index++) {
+                    const element = cart.cartItems[index]
+                    const { data } = await axios.get(`https://6241abd3042b562927a77458.mockapi.io/itemsOfCart?code=${element.code}`)
+                    for (let index = 0; index < data.length; index++) {
+                        const item = data[index];
+                        await axios.delete('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart/' + item.id)
+                    }
+                }
                 dispatch(clearItems())
                 alert('ваш заказ оформлен')   
             }
@@ -71,22 +66,21 @@ const Cart: React.FC<CartProps> = ({isHeader, overflowHidden}) => {
         overflowHidden()
     }
 
-    const clearCart = () => {
+    const clearCart = async () => {
         if (window.confirm('вы действительно хотите очистить корзину?')){
-            cart.cartItems.map(async (item: {
-                id: string,
-                img: string,
-                code: string,
-                title: string,
-                price: number,
-                count: number,
-                producer: string,
-                rating: number
-            }) => {
-                await axios.delete('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart/' + item.id)
-                await delay()
-            })
+            setLoading(true)
+            overflowHidden()
+            for (let index = 0; index < cart.cartItems.length; index++) {
+                const element = cart.cartItems[index]
+                const { data } = await axios.get(`https://6241abd3042b562927a77458.mockapi.io/itemsOfCart?code=${element.code}`)
+                for (let index = 0; index < data.length; index++) {
+                    const item = data[index];
+                    await axios.delete('https://6241abd3042b562927a77458.mockapi.io/itemsOfCart/' + item.id)
+                }
+            }
             dispatch(clearItems())
+            setLoading(false)
+            overflowHidden()
         }
     }
 

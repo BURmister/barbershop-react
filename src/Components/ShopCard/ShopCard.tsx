@@ -34,7 +34,6 @@ type ShopCardProps = {
 
 const ShopCard: React.FC<ShopCardProps> = ({id, code, title, img, price, onPlus, status, producer, rating}) => {
 
-    const dispatch = useDispatch()
     const cartItem = useSelector((state: any) => state.cart.cartItems.find((obj: shopCardObject) => Number(obj.code) === Number(code)))
 
     const onClickPlus = () => {
