@@ -99,6 +99,7 @@
 }
 
 .product__price > span {
+    
     position: absolute;
     content: '';
 

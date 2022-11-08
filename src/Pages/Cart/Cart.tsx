@@ -64,6 +64,7 @@ const Cart: React.FC<CartProps> = ({isHeader, overflowHidden}) => {
         }
         setLoading(false)
         overflowHidden()
+        
     }
 
     const clearCart = async () => {

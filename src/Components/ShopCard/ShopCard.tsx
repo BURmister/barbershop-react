@@ -53,7 +53,6 @@ const ShopCard: React.FC<ShopCardProps> = ({id, code, title, img, price, onPlus,
                 viewBox="0 0 200 330"
                 backgroundColor="#f3f3f3"
                 foregroundColor="#ecebeb"
-                
                 >
                 <rect x="0" y="0" rx="0" ry="0" width="200" height="165" /> 
                 <rect x="-2" y="185" rx="0" ry="0" width="200" height="48" /> 

@@ -126,7 +126,6 @@ const ProductPage: React.FC = () => {
                                     <li>{product.price} ₽</li>
                                     <button onClick={() => addToCart(product)} className=" button product__button__buy">
                                         купить
-                                        
                                     </button>
                                     { addedCount > 0 && <span>{addedCount}</span>}
                                 </div>

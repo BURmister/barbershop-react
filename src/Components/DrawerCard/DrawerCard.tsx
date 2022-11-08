@@ -79,6 +79,7 @@ const DrawerCard: React.FC<DrawerCardProps> = ({id, code, title, img, price, cou
             window.confirm('вы действительно хотите удалить продукт?') && await deleteItem(obj)
         } else {
             await deleteItem(obj)
+            
         }
         setLoading(false)
         overflowHidden()

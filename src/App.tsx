@@ -55,7 +55,7 @@ function App() {
         isHeader,
         setIsHeader,
         newsCards,
-        overflowHidden,
+        overflowHidden, 
       }}>
 
       <div>
